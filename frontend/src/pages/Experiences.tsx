@@ -24,7 +24,6 @@ export default function Experiences() {
         <div className="max-w-4xl mx-auto relative">
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
-
           <div className="space-y-8">
             {experiences.map((experience, index) => (
               <motion.div
@@ -47,7 +46,7 @@ export default function Experiences() {
                           className="w-full md:w-32 h-32 object-cover rounded-lg"
                         />
                       )}
-                      
+
                       <div className="flex-1 space-y-4">
                         <div>
                           <div className="text-sm text-primary font-semibold mb-1">
@@ -58,9 +57,9 @@ export default function Experiences() {
                           </h3>
                           <p className="text-muted-foreground">{experience.company}</p>
                         </div>
-                        
+
                         <p className="text-muted-foreground">{experience.description}</p>
-                        
+
                         <Button asChild variant="outline" size="sm">
                           <Link to={`/experiencias/${experience.id}`}>
                             Ver detalhes

@@ -83,6 +83,36 @@ export default function ExperienceDetail() {
               </div>
             )}
 
+            {/* PARTE DOS PROJECTOS */}
+            {experience.projects && experience.projects.length > 0 && (
+              <div>
+                <h3 className="text-xl font-heading font-semibold mb-3">Projetos desenvolvidos</h3>
+                <ul className="space-y-3">
+                  {experience.projects.map((project, index) => (
+                    <li key={index} className="border rounded-md p-4 hover:bg-muted/30 transition">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <h4 className="font-semibold">{project.name}</h4>
+                          <p className="text-muted-foreground">{project.description}</p>
+                        </div>
+                        {project.link && (
+                          <a
+                            href={project.link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-primary hover:underline flex items-center gap-1"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                        )}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+
             {experience.link && (
               <Button asChild>
                 <a href={experience.link} target="_blank" rel="noopener noreferrer">
