@@ -1,4 +1,10 @@
-import { Github, Linkedin, Instagram } from 'lucide-react';
+import { SiGithub, SiInstagram, SiLinkedin } from 'react-icons/si';
+
+const social_links = {
+  github: "https://github.com/manueljaime007",
+  linkedin: "https://www.linkedin.com/in/manuel-jaime-816a8536b/",
+  instagram: "https://www.instagram.com/manuel_jaime007/",
+}
 
 export const Footer = () => {
   return (
@@ -8,35 +14,38 @@ export const Footer = () => {
           <p className="text-sm text-muted-foreground">
             © {new Date().getFullYear()} GuanaBee. Todos os direitos reservados.
           </p>
-          
-          <div className="flex items-center gap-4">
+
+          <div className="flex items-center gap-4 mr-10">
             <a
-              href="https://github.com"
+              href={social_links.github}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="GitHub"
             >
-              <Github className="h-5 w-5" />
+              <SiGithub className="h-5 w-5" />
             </a>
             <a
-              href="https://linkedin.com"
+              href={social_links.linkedin}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="LinkedIn"
             >
-              <Linkedin className="h-5 w-5" />
+              <SiLinkedin className="h-5 w-5" />
             </a>
             <a
-              href="https://instagram.com"
+              href={social_links.instagram}
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-colors"
               aria-label="Instagram"
             >
-              <Instagram className="h-5 w-5" />
+              <SiInstagram className="h-5 w-5" />
+
             </a>
+
+
           </div>
         </div>
       </div>

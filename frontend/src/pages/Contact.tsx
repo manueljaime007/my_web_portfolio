@@ -119,7 +119,7 @@ export default function Contact() {
                       href="mailto:contato@guanabee.com"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      contato@guanabee.com
+                      manueljaime0020@gmail.com
                     </a>
                   </div>
                 </div>
@@ -129,10 +129,10 @@ export default function Contact() {
                   <div>
                     <h3 className="font-heading font-semibold mb-1">Telefone</h3>
                     <a
-                      href="tel:+351900000000"
+                      href="tel:+244950366621"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
-                      +351 900 000 000
+                      +244 950 366 621
                     </a>
                   </div>
                 </div>
@@ -141,7 +141,7 @@ export default function Contact() {
                   <MapPin className="h-6 w-6 text-primary mt-1" />
                   <div>
                     <h3 className="font-heading font-semibold mb-1">Localização</h3>
-                    <p className="text-muted-foreground">Lisboa, Portugal</p>
+                    <p className="text-muted-foreground">Luanda, Angola</p>
                   </div>
                 </div>
               </CardContent>

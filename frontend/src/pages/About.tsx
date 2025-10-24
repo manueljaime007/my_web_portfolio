@@ -38,21 +38,21 @@ export default function About() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 pt-6">
+            <div className="grid md:grid-cols-2 gap-6 pt-6">
               <div className="text-center p-6 bg-muted rounded-lg">
-                <div className="text-4xl font-heading font-bold text-primary mb-2">5+</div>
+                <div className="text-4xl font-heading font-bold text-primary mb-2">3</div>
                 <div className="text-sm text-muted-foreground">Anos de experiência</div>
               </div>
               
               <div className="text-center p-6 bg-muted rounded-lg">
-                <div className="text-4xl font-heading font-bold text-primary mb-2">50+</div>
+                <div className="text-4xl font-heading font-bold text-primary mb-2">10+</div>
                 <div className="text-sm text-muted-foreground">Projetos completos</div>
               </div>
               
-              <div className="text-center p-6 bg-muted rounded-lg">
-                <div className="text-4xl font-heading font-bold text-primary mb-2">30+</div>
+              {/* <div className="text-center p-6 bg-muted rounded-lg">
+                <div className="text-4xl font-heading font-bold text-primary mb-2">10+</div>
                 <div className="text-sm text-muted-foreground">Clientes satisfeitos</div>
-              </div>
+              </div> */}
             </div>
           </CardContent>
         </Card>

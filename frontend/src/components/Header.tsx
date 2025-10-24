@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Menu, SlashIcon, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { Button } from './ui/button';
 
+
 const navLinks = [
   { name: 'Home', path: '/' },
-  { name: 'Sobre mim', path: '/sobre' },
-  { name: 'Minha tech stack', path: '/tech-stack' },
+  // { name: 'Sobre mim', path: '/sobre' },
+  // { name: 'Minha tech stack', path: '/tech-stack' },
   { name: 'Projetos', path: '/projetos' },
   { name: 'Experiências', path: '/experiencias' },
   { name: 'Galeria', path: '/galeria' },
@@ -23,8 +24,10 @@ export const Header = () => {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/80 backdrop-blur-md">
       <nav className="container mx-auto flex h-16 items-center justify-between px-4">
-        <Link to="/" className="text-2xl font-heading font-bold text-gradient">
-          GuanaBee
+        <Link to="/" className="text-[1.2rem] font-heading font-bold text-gradient flex items-center">
+          <ChevronLeft size={25} className='text-primary' />
+            GuanaBee 007 <SlashIcon size={20} className='text-primary' />
+          <ChevronRight size={25} className='text-primary' />
         </Link>
 
         {/* Desktop Navigation */}
@@ -33,11 +36,10 @@ export const Header = () => {
             <Link
               key={link.path}
               to={link.path}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${
-                isActive(link.path)
-                  ? 'bg-primary text-primary-foreground'
-                  : 'hover:bg-muted'
-              }`}
+              className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${isActive(link.path)
+                ? 'bg-primary text-primary-foreground'
+                : 'hover:bg-muted'
+                }`}
             >
               {link.name}
             </Link>
@@ -68,11 +70,10 @@ export const Header = () => {
                 key={link.path}
                 to={link.path}
                 onClick={() => setIsMenuOpen(false)}
-                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${
-                  isActive(link.path)
-                    ? 'bg-primary text-primary-foreground'
-                    : 'hover:bg-muted'
-                }`}
+                className={`px-4 py-3 rounded-lg text-sm font-medium transition-colors ${isActive(link.path)
+                  ? 'bg-primary text-primary-foreground'
+                  : 'hover:bg-muted'
+                  }`}
               >
                 {link.name}
               </Link>
