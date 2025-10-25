@@ -1,5 +1,5 @@
 generator client {
-  provider = "prisma-client"
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -14,12 +14,16 @@ model ContactMessage {
   message    String   @db.Text
   created_at DateTime @default(now())
   is_read    Boolean  @default(false)
+
+  @@map("contact_message")
 }
 
 model Admin {
   id       Int    @id @default(autoincrement())
   email    String @unique @db.VarChar(100)
   password String @db.VarChar(255) // hash da senha
+
+  @@map("admin")
 }
 
 model Experience {
@@ -36,6 +40,8 @@ model Experience {
   link             String?
   created_at       DateTime  @default(now())
   updated_at       DateTime  @updatedAt
+
+  @@map("experience")
 }
 
 model Project {
@@ -47,4 +53,6 @@ model Project {
   experience    Experience? @relation(fields: [experiencesId], references: [id])
   created_at    DateTime    @default(now())
   updated_at    DateTime    @updatedAt
+
+  @@map("project")
 }
