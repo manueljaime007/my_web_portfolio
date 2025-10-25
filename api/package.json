@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.2",
     "@nestjs/core": "^11.0.1",
+    "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.0.1",
     "@prisma/client": "^6.18.0",
     "bcrypt": "^6.0.0",
@@ -72,7 +74,7 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   },
-  "prisma":{
+  "prisma": {
     "seed": "ts-node prisma/seed.ts"
   }
 }
