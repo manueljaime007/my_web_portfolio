@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ExternalLink, Github } from 'lucide-react';
@@ -6,24 +6,69 @@ import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { projects } from '@/data/projects';
+
+import { Project } from '@/data/projects';
 
 export default function Projects() {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
+  const [projectos, setProjectos] = useState<Project[]>([]);
 
-  const filterProjects = (type: 'individual' | 'group' | 'all') => {
-    return projects.filter(project => {
-      const matchesType = type === 'all' || project.type === type;
-      const matchesSearch = project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.description.toLowerCase().includes(searchTerm.toLowerCase());
-      const matchesTech = !selectedTech || project.tags.includes(selectedTech);
-      
-      return matchesType && matchesSearch && matchesTech;
-    });
+  // Função para carregar projetos da API
+  async function carregarProjectos(url: string) {
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      // Mapear dados da API para o formato esperado
+      const adaptados: Project[] = data.map((p: any) => ({
+        id: String(p.id),
+        title: p.title,
+        description: p.description,
+        fullDescription: p.fullDescription || '',
+        image: p.image,
+        tags: p.tags || [],
+        type: p.type,
+        links: {
+          site: p.link || '',
+          github: p.github || '',
+          playStore: p.playStore || '',
+          appStore: p.appStore || ''
+        }
+      }));
+
+      setProjectos(adaptados);
+    } catch (error) {
+      console.error('Erro ao carregar projetos:', error);
+    }
+  }
+
+  // Carregar projetos apenas uma vez
+  useEffect(() => {
+
+    const interval = setInterval(() => {
+      carregarProjectos('http://192.168.18.4:9090/api/v1/projects');
+    }, 100)
+
+    carregarProjectos('http://192.168.18.4:9090/api/v1/projects');
+
+    return () => clearInterval(interval);
+  }, []);
+
+  // Obter todas as tecnologias únicas para os filtros
+  const allTechs = Array.from(new Set(projectos.flatMap(p => p.tags)));
+
+  // Função para filtrar projetos com base em tipo, pesquisa e tecnologia
+  const filterProjects = (type: 'all' | 'individual' | 'group') => {
+    return projectos
+      .filter(p => type === 'all' || p.type === type)
+      .filter(
+        p =>
+          p.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          p.description.toLowerCase().includes(searchTerm.toLowerCase())
+      )
+      .filter(p => !selectedTech || p.tags.includes(selectedTech));
   };
-
-  const allTechs = Array.from(new Set(projects.flatMap(p => p.tags)));
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -33,13 +78,13 @@ export default function Projects() {
         transition={{ duration: 0.5 }}
         className="space-y-8"
       >
+        {/* Título */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl md:text-5xl font-heading font-bold">Projetos</h1>
-          <p className="text-xl text-muted-foreground">
-            Trabalhos e projetos que desenvolvi
-          </p>
+          <p className="text-xl text-muted-foreground">Trabalhos e projetos que desenvolvi</p>
         </div>
 
+        {/* Filtros de pesquisa e tecnologia */}
         <div className="max-w-5xl mx-auto space-y-4">
           <input
             type="text"
@@ -70,6 +115,7 @@ export default function Projects() {
           </div>
         </div>
 
+        {/* Tabs */}
         <Tabs defaultValue="all" className="max-w-5xl mx-auto">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="all">Todos</TabsTrigger>
@@ -80,9 +126,9 @@ export default function Projects() {
           {['all', 'individual', 'group'].map((type) => (
             <TabsContent key={type} value={type} className="mt-6">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filterProjects(type as any).map((project, index) => (
+                {filterProjects(type as 'all' | 'individual' | 'group').map((projecto, index) => (
                   <motion.div
-                    key={project.id}
+                    key={projecto.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -90,41 +136,53 @@ export default function Projects() {
                     <Card className="h-full flex flex-col hover-lift">
                       <CardHeader>
                         <img
-                          src={project.image}
-                          alt={project.title}
+                          src={
+                            projecto.image && projecto.image !== ''
+                              ? projecto.image :
+                              'placeholder.svg'
+                          }
+                          alt={projecto.title}
                           className="w-full h-48 object-cover rounded-lg mb-4"
                         />
-                        <h3 className="text-xl font-heading font-semibold">{project.title}</h3>
+
+                        <h3 className="text-xl font-heading font-semibold">{projecto.title}</h3>
                       </CardHeader>
-                      
+
                       <CardContent className="flex-1">
-                        <p className="text-muted-foreground mb-4">{project.description}</p>
-                        
+                        <p className="text-muted-foreground mb-4">{projecto.description}</p>
                         <div className="flex flex-wrap gap-2">
-                          {project.tags.map((tag) => (
+                          {projecto.tags.map((tag) => (
                             <Badge key={tag} variant="secondary">
                               {tag}
                             </Badge>
                           ))}
                         </div>
                       </CardContent>
-                      
+
                       <CardFooter className="flex gap-2">
                         <Button asChild size="sm" className="flex-1">
-                          <Link to={`/projetos/${project.id}`}>Ver mais</Link>
+                          <Link to={`/projetos/${projecto.id}`}>Ver mais</Link>
                         </Button>
-                        
-                        {project.links.site && (
+
+                        {projecto.links.site && (
                           <Button asChild variant="outline" size="sm">
-                            <a href={project.links.site} target="_blank" rel="noopener noreferrer">
+                            <a
+                              href={projecto.links.site}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <ExternalLink className="h-4 w-4" />
                             </a>
                           </Button>
                         )}
-                        
-                        {project.links.github && (
+
+                        {projecto.links.github && (
                           <Button asChild variant="outline" size="sm">
-                            <a href={project.links.github} target="_blank" rel="noopener noreferrer">
+                            <a
+                              href={projecto.links.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               <Github className="h-4 w-4" />
                             </a>
                           </Button>

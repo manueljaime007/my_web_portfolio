@@ -14,20 +14,27 @@ import { Prisma } from '@prisma/client';
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
 
-  @Get()
-  async findAll() {
-    return this.projectsService.findAll();
-  }
-
   @Post()
   async create(@Body() data: Prisma.ExperienceCreateInput) {
     return this.projectsService.create(data);
+  }
+
+  //  ------ ROTAS GET --------
+  @Get()
+  async findAll() {
+    return this.projectsService.findAll();
   }
 
   @Get(':id')
   async findOne(@Param('id') id: number) {
     return this.projectsService.findOne(Number(id));
   }
+
+  @Get('tags')
+  async getAllUniqueTags(): Promise<string[]> {
+    return this.projectsService.findAllUniqueTags();
+  }
+  //  ------ ROTAS GET --------
 
   @Patch(':id')
   async update(

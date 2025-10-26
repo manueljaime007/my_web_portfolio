@@ -18,6 +18,16 @@ export class ProjectsService {
     return this.prisma.project.findUnique({ where: { id } });
   }
 
+  async findAllUniqueTags(): Promise<string[]> {
+    const projects = await this.prisma.project.findMany({
+      select: { tags: true },
+    });
+
+    const allTags = projects.flatMap((project) => project.tags);
+    const uniqueTags = Array.from(new Set(allTags));
+
+    return uniqueTags;
+  }
   async update(id: number, data: Prisma.ProjectUpdateInput) {
     return this.prisma.project.update({
       where: { id },

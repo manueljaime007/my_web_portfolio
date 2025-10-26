@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { AnimatedBackground } from '@/components/AnimatedBackground';
 import { motion } from 'framer-motion';
-import profileImage from '@/assets/profile.png';
+import profileImage from '@/assets/profile.jpeg';
 import About from './About';
 import TechStack from './TechStack';
 

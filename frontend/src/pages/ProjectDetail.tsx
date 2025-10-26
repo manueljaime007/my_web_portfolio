@@ -1,14 +1,78 @@
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Github } from 'lucide-react';
+import { ArrowLeft, ExternalLink } from 'lucide-react';
+import { SiGithub } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { projects } from '@/data/projects';
+import { Project } from '@/data/projects';
+import { useEffect, useState } from 'react';
+
+// export const projects: Project[] = [
+//   {
+//     id: "1 ",
+//     title: "E-commerce Platform",
+//     description: "Plataforma completa de e-commerce com painel administrativo",
+//     fullDescription:
+//       "Plataforma de e-commerce desenvolvida com React, Node.js e PostgreSQL. Inclui sistema de pagamentos, gestão de produtos, carrinho de compras e painel administrativo completo.",
+//     image: "/placeholder.svg",
+//     tags: ["React", "Node.js", "PostgreSQL", "TypeScript"],
+//     type: "individual",
+//     links: {
+//       site: "https://example.com",
+//       github: "https://github.com/user/project",
+//     },
+//   },
+
+// ];
+
 
 export default function ProjectDetail() {
-  const { slug } = useParams();
-  const project = projects.find(p => p.id === slug);
+  const { id } = useParams();
+  const [project, setProject] = useState<Project | undefined>(undefined)
+
+  // Função para carregar projetos da API
+  async function carregarProjecto(url: string) {
+    try {
+      const res = await fetch(url);
+      const data = await res.json();
+
+      console.log(data)
+
+      const adaptado: Project = {
+        id: data.id,
+        title: data.title,
+        description: data.description,
+        fullDescription: data.fullDescription || '',
+        image: data.image,
+        tags: data.tags || [],
+        type: data.type,
+        links: {
+          site: data.link || '',
+          github: data.github || '',
+          playStore: data.playStore || '',
+          appStore: data.appStore || ''
+        }
+      };
+
+      setProject(adaptado);
+    } catch (error) {
+      console.error('Erro ao carregar projetos:', error);
+    }
+  }
+  // Carregar projetos apenas uma vez
+  useEffect(() => {
+
+    // const interval = setInterval(() => {
+    //   carregarProjecto('http://192.168.18.4:9090/api/v1/projects');
+    // }, 100000)
+
+    carregarProjecto(`http://192.168.18.4:9090/api/v1/projects/${id}`);
+
+    // return () => clearInterval(interval);
+  }, []);
+
+  console.log(id)
 
   if (!project) {
     return (
@@ -20,6 +84,8 @@ export default function ProjectDetail() {
       </div>
     );
   }
+
+ 
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -48,7 +114,13 @@ export default function ProjectDetail() {
         </div>
 
         <img
-          src={project.image}
+          src={
+            project.image && project.image == '' 
+            ? project.image
+            : '/placeholder.svg'
+          }
+
+
           alt={project.title}
           className="w-full h-96 object-cover rounded-lg"
         />
@@ -68,11 +140,11 @@ export default function ProjectDetail() {
                   </a>
                 </Button>
               )}
-              
+
               {project.links.github && (
                 <Button asChild variant="outline">
                   <a href={project.links.github} target="_blank" rel="noopener noreferrer">
-                    <Github className="mr-2 h-4 w-4" />
+                    <SiGithub className="mr-2 h-4 w-4" />
                     Ver repositório
                   </a>
                 </Button>
