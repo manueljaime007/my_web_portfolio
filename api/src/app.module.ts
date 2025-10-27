@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { AdminModule } from './admin/admin.module';
-import { ContactsModule } from './contacts/contacts.module';
+import { ContactsModule } from './contact_messages/contacts.module';
 import { ExperiencesModule } from './experiences/experiences.module';
 import { ProjectsModule } from './projects/projects.module';
 

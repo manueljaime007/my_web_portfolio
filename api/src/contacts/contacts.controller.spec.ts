@@ -1,15 +1,27 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { ContactController } from './contacts.controller';
+import { ContactsController} from './contacts.controller';
+import { ContactsService } from './contacts.service';
 
 describe('ContactController', () => {
-  let controller: ContactController;
+  let controller: ContactsController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [ContactController],
+      controllers: [ContactsController],
+      providers: [
+        {
+          provide: ContactsService,
+          useValue: {
+            create: jest.fn(),
+            findAll: jest.fn(),
+            findOne: jest.fn(),
+            delete: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
-    controller = module.get<ContactController>(ContactController);
+    controller = module.get<ContactsController>(ContactsController);
   });
 
   it('should be defined', () => {
