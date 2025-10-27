@@ -29,14 +29,6 @@ export class ContactsController {
     return this.contactsService.findOne(Number(id));
   }
 
-  // @Patch(':id')
-  // async update(
-  //   @Param('id') id: number,
-  //   @Body() data: Prisma.ContactMessageUpdateInput,
-  // ) {
-  //   return this.contactsService.update(Number(id), data);
-  // }
-
   @Delete(':id')
   async remove(@Param('id') id: number) {
     return this.contactsService.remove(Number(id));

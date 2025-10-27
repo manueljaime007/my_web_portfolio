@@ -17,13 +17,6 @@ export class ContactsService {
   async findOne(id: number) {
     return this.prisma.contactMessage.findUnique({ where: { id } });
   }
-
-  // async update(id: number, data: Prisma.ContactMessageUpdateInput) {
-  //   return this.prisma.contactMessage.update({
-  //     where: { id },
-  //     data,
-  //   });
-  // }
   
   async remove(id: number) {
     return this.prisma.contactMessage.delete({ where: { id } });
