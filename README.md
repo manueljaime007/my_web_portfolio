@@ -28,7 +28,8 @@
 - **Radix UI + Framer Motion** — Componentes acessíveis com animações fluidas.
 - **TanStack Query** — Controle inteligente de estado e requisições assíncronas.
 - **React Hook Form + Zod** — Formulários reativos com validação forte.
-- **Lucide React & Recharts** — Ícones e gráficos modernos e leves.
+- **Lucide React* — Ícones e modernos e leves.
+<!-- - **Lucide React & Recharts** — Ícones e gráficos modernos e leves. -->
 
 ### Ferramentas de Desenvolvimento
 
