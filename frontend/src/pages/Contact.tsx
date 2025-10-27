@@ -13,19 +13,42 @@ export default function Contact() {
     name: '',
     email: '',
     message: '',
-    newsletter: false,
+    // newsletter: false,
   });
   const { toast } = useToast();
 
+
+  const postData = async (url: string) => {
+    try {
+      await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(formData)
+      })
+    } catch (error) {
+      console.log(`Erro ao enviar mensagem: ${error}`)
+    }
+
+  }
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
+    postData("http://192.168.18.4:9090/api/v1/contacts")
+
     toast({
       title: 'Mensagem enviada!',
       description: 'Entrarei em contacto em breve.',
     });
-    
-    setFormData({ name: '', email: '', message: '', newsletter: false });
+
+    setFormData({
+      name: '',
+      email: '',
+      message: '',
+      // newsletter: false
+    });
   };
 
   return (
@@ -88,9 +111,12 @@ export default function Contact() {
                 <div className="flex items-center space-x-2">
                   <Checkbox
                     id="newsletter"
-                    checked={formData.newsletter}
+                    // checked={formData.newsletter}
                     onCheckedChange={(checked) =>
-                      setFormData({ ...formData, newsletter: checked as boolean })
+                      setFormData({
+                        ...formData,
+                        // newsletter: checked as boolean
+                      })
                     }
                   />
                   <label
@@ -116,7 +142,7 @@ export default function Contact() {
                   <div>
                     <h3 className="font-heading font-semibold mb-1">Email</h3>
                     <a
-                      href="mailto:contato@guanabee.com"
+                      href="mailto:manueljaime0020@gmail.com"
                       className="text-muted-foreground hover:text-primary transition-colors"
                     >
                       manueljaime0020@gmail.com
