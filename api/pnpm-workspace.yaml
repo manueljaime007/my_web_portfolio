@@ -1,9 +1,0 @@
-onlyBuiltDependencies:
-  - '@nestjs/core'
-  - '@prisma/client'
-  - '@prisma/engines'
-  - '@scarf/scarf'
-  - aws-sdk
-  - bcrypt
-  - prisma
-  - unrs-resolver
