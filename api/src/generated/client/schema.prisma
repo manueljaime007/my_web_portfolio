@@ -1,0 +1,63 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model ContactMessage {
+  id         Int      @id @default(autoincrement())
+  name       String   @db.VarChar(50)
+  email      String   @db.VarChar(100)
+  message    String   @db.Text
+  created_at DateTime @default(now())
+  is_read    Boolean  @default(false)
+
+  @@map("contact_message")
+}
+
+model Admin {
+  id       Int    @id @default(autoincrement())
+  email    String @unique @db.VarChar(100)
+  password String @db.VarChar(255) // hash da senha
+
+  @@map("admin")
+}
+
+model Experience {
+  id               Int       @id @default(autoincrement())
+  title            String
+  company          String?
+  period           String
+  description      String?
+  fullDescription  String
+  responsibilities String[]
+  technologies     String[]
+  image            String
+  link             String?
+  projects         Project[] @relation("ExperienceProjects")
+  created_at       DateTime  @default(now())
+  updated_at       DateTime  @updatedAt
+
+  @@map("experience")
+}
+
+model Project {
+  id              Int         @id @default(autoincrement())
+  title           String
+  description     String?
+  fullDescription String?
+  image           String
+  link            String?
+  type            String?
+  tags            String[]
+  experienceId    Int?
+  experience      Experience? @relation("ExperienceProjects", fields: [experienceId], references: [id])
+  created_at      DateTime    @default(now())
+  updated_at      DateTime    @updatedAt
+
+  @@map("project")
+}
