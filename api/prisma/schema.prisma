@@ -1,6 +1,7 @@
 generator client {
   provider = "prisma-client-js"
   output   = "../src/generated/client"
+  engineType = "client" // Gera só JS, sem Rust binaries
 }
 
 datasource db {
