@@ -47,10 +47,10 @@ export default function Projects() {
   useEffect(() => {
 
     const interval = setInterval(() => {
-      carregarProjectos('http://192.168.18.4:9090/api/v1/projects');
+      carregarProjectos('http://192.168.18.13:9090/api/v1/projects');
     }, 100)
 
-    carregarProjectos('http://192.168.18.4:9090/api/v1/projects');
+    carregarProjectos('http://192.168.18.13:9090/api/v1/projects');
 
     return () => clearInterval(interval);
   }, []);
