@@ -1,0 +1,16 @@
+{
+  "version": 3,
+  "framework": null,
+  "builds": [
+    {
+      "src": "index.ts",
+      "use": "@vercel/node@3"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "index.ts"
+    }
+  ]
+}
