@@ -1,5 +1,5 @@
 import serverless from 'serverless-http';
-import { server, createApp } from './main';
+import { server, createApp } from './src/main';
 
 createApp().catch(console.error);  // inicializa o Nest
 
