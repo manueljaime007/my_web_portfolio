@@ -7,7 +7,7 @@ import serverless from 'serverless-http';
 
 const server = express();
 
-const bootstrapServer = async () => {
+async function bootstrap() {
   const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
 
   // Prefixo global e CORS
@@ -27,15 +27,11 @@ const bootstrapServer = async () => {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/v1/docs', app, document);
 
-  await app.init();
+  await app.init(); // ⚠️ importante para serverless
+}
 
-  return server;
-};
+// Inicializa o Nest, mas não bloqueia export
+bootstrap().catch(err => console.error(err));
 
-// Exporta o handler serverless para Vercel
-let handler: any;
-(async () => {
-  const server = await bootstrapServer();
-  handler = serverless(server);
-})();
-export { handler };
+// Exporta **sincronamente** o handler
+export const handler = serverless(server);
