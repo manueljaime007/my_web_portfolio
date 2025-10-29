@@ -1,7 +1,0 @@
-src/
-prisma/
-*.ts
-*.js
-tsconfig.json
-package.json
-pnpm-lock.yaml
