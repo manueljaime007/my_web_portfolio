@@ -26,5 +26,5 @@ async function bootstrap() {
 
 bootstrap().catch(console.error);
 
-// exportação CommonJS compatível com Vercel
-module.exports.handler = serverless(server);
+// exportação serverless compatível
+export const handler = serverless(server);
