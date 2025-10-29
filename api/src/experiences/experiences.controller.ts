@@ -8,7 +8,7 @@ import {
   Post,
 } from '@nestjs/common';
 import { ExperiencesService } from './experiences.service';
-import { Prisma } from '@prisma/client';
+import { Prisma } from '../../src/generated/client';
 
 @Controller('experiences')
 export class ExperiencesController {

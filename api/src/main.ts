@@ -1,20 +1,23 @@
+// src/main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ExpressAdapter } from '@nestjs/platform-express';
+import express from 'express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+const server = express();
+const adapter = new ExpressAdapter(server);
 
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule, adapter);
   app.setGlobalPrefix('api/v1');
   app.enableCors();
 
-  // IMPLEMENTANDO SWAGGER <--
-
+  // Configuração do Swagger
+  
   const config = new DocumentBuilder()
     .setTitle('Meu Portfólio Web - API')
-    .setDescription(
-      'Documentação da API do portfólio profissional do Manuel Jaime',
-    )
+    .setDescription('Documentação da API do portfólio profissional do Manuel Jaime')
     .setVersion('1.0')
     .addTag('projects')
     .addTag('contacts')
@@ -23,12 +26,10 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/v1/docs', app, document);
-  // IMPLEMENTANDO SWAGGER  -->
 
-  const PORT = process.env.PORT || 3000;
-  await app.listen(PORT);
+  await app.init();
 
-  console.log(`Server running at: http://localhost:${PORT}/api/v1`);
+  return server; // Retorna o Express server
 }
-bootstrap();
 
+export default bootstrap();

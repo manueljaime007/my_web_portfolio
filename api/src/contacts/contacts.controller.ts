@@ -8,7 +8,7 @@ import {
   Patch,
 } from '@nestjs/common';
 import { ContactsService } from './contacts.service';
-import { Prisma } from '@prisma/client';
+import { Prisma } from '../../src/generated/client';
 
 @Controller('contacts')
 export class ContactsController {
