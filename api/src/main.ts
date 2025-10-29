@@ -1,19 +1,20 @@
-// main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import express, { Express } from 'express';
 import { ExpressAdapter } from '@nestjs/platform-express';
+import express from 'express';
 import serverless from 'serverless-http';
 
-const server: Express = express();
+const server = express();
 
-async function createNestApp() {
+const bootstrapServer = async () => {
   const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
 
+  // Prefixo global e CORS
   app.setGlobalPrefix('api/v1');
   app.enableCors();
 
+  // Swagger
   const config = new DocumentBuilder()
     .setTitle('Meu Portfólio Web - API')
     .setDescription('Documentação da API do portfólio profissional do Manuel Jaime')
@@ -26,13 +27,15 @@ async function createNestApp() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/v1/docs', app, document);
 
-  return app;
-}
+  await app.init();
 
-// Inicializa Nest no primeiro acesso
-let isInitialized = false;
-createNestApp().then(() => {
-  isInitialized = true;
-});
+  return server;
+};
 
-export default serverless(server);
+// Exporta o handler serverless para Vercel
+let handler: any;
+(async () => {
+  const server = await bootstrapServer();
+  handler = serverless(server);
+})();
+export { handler };
