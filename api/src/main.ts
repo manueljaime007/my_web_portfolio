@@ -14,6 +14,7 @@ async function bootstrap() {
   app.enableCors();
 
   // Configuração do Swagger
+  
   const config = new DocumentBuilder()
     .setTitle('Meu Portfólio Web - API')
     .setDescription('Documentação da API do portfólio profissional do Manuel Jaime')
