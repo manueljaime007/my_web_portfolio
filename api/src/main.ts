@@ -6,6 +6,9 @@ import express from 'express';
 const server = express();
 const adapter = new ExpressAdapter(server);
 
+/**
+ * Inicializa o NestJS com ExpressAdapter
+ */
 export async function createApp() {
   const app = await NestFactory.create(AppModule, adapter);
   app.setGlobalPrefix('api/v1');

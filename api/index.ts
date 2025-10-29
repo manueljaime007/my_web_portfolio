@@ -1,6 +1,18 @@
 import serverless from 'serverless-http';
 import { server, createApp } from './src/main';
 
-createApp().catch(console.error);  // inicializa o Nest
+let isInitialized = false;
 
-export default serverless(server);
+/**
+ * Handler serverless compatível com Vercel.
+ * Inicializa NestJS na primeira requisição.
+ */
+const handler = async (req: any, res: any) => {
+  if (!isInitialized) {
+    await createApp();
+    isInitialized = true;
+  }
+  return serverless(server)(req, res);
+};
+
+export default handler;
