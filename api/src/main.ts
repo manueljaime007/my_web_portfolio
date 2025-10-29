@@ -5,26 +5,17 @@ import express from 'express';
 import serverless from 'serverless-http';
 
 const server = express();
+const adapter = new ExpressAdapter(server);
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
-
+async function createApp() {
+  const app = await NestFactory.create(AppModule, adapter);
   app.setGlobalPrefix('api/v1');
   app.enableCors();
-
-  // Se usar Swagger, inicializar aqui
-  // const config = new DocumentBuilder()
-  //   .setTitle('Meu Portfólio Web - API')
-  //   .setDescription('Documentação da API')
-  //   .setVersion('1.0')
-  //   .build();
-  // const document = SwaggerModule.createDocument(app, config);
-  // SwaggerModule.setup('api/v1/docs', app, document);
-
   await app.init();
+  return app;
 }
 
-bootstrap().catch(console.error);
+// Inicializa app sem chamar bootstrap()
+createApp().catch(console.error);
 
-// exportação serverless compatível
-export const handler = serverless(server);
+export default serverless(server);
