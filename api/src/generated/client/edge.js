@@ -173,7 +173,7 @@ const config = {
       "fromEnvVar": null
     },
     "config": {
-      "engineType": "client"
+      "engineType": "library"
     },
     "binaryTargets": [
       {
@@ -187,7 +187,8 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.18.0",
@@ -205,8 +206,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider   = \"prisma-client-js\"\n  output     = \"../src/generated/client\"\n  engineType = \"client\" // Gera só JS, sem Rust binaries\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel ContactMessage {\n  id         Int      @id @default(autoincrement())\n  name       String   @db.VarChar(50)\n  email      String   @db.VarChar(100)\n  message    String   @db.Text\n  created_at DateTime @default(now())\n  is_read    Boolean  @default(false)\n\n  @@map(\"contact_message\")\n}\n\nmodel Admin {\n  id       Int    @id @default(autoincrement())\n  email    String @unique @db.VarChar(100)\n  password String @db.VarChar(255) // hash da senha\n\n  @@map(\"admin\")\n}\n\nmodel Experience {\n  id               Int       @id @default(autoincrement())\n  title            String\n  company          String?\n  period           String\n  description      String?\n  fullDescription  String\n  responsibilities String[]\n  technologies     String[]\n  image            String\n  link             String?\n  projects         Project[] @relation(\"ExperienceProjects\")\n  created_at       DateTime  @default(now())\n  updated_at       DateTime  @updatedAt\n\n  @@map(\"experience\")\n}\n\nmodel Project {\n  id              Int         @id @default(autoincrement())\n  title           String\n  description     String?\n  fullDescription String?\n  image           String\n  link            String?\n  type            String?\n  tags            String[]\n  experienceId    Int?\n  experience      Experience? @relation(\"ExperienceProjects\", fields: [experienceId], references: [id])\n  created_at      DateTime    @default(now())\n  updated_at      DateTime    @updatedAt\n\n  @@map(\"project\")\n}\n",
-  "inlineSchemaHash": "dbcaea0f98671cabbb7557dbacec06bab3a266b892b538f6fcfc63f1d4fba008",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/client\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel ContactMessage {\n  id         Int      @id @default(autoincrement())\n  name       String   @db.VarChar(50)\n  email      String   @db.VarChar(100)\n  message    String   @db.Text\n  created_at DateTime @default(now())\n  is_read    Boolean  @default(false)\n\n  @@map(\"contact_message\")\n}\n\nmodel Admin {\n  id       Int    @id @default(autoincrement())\n  email    String @unique @db.VarChar(100)\n  password String @db.VarChar(255) // hash da senha\n\n  @@map(\"admin\")\n}\n\nmodel Experience {\n  id               Int       @id @default(autoincrement())\n  title            String\n  company          String?\n  period           String\n  description      String?\n  fullDescription  String\n  responsibilities String[]\n  technologies     String[]\n  image            String\n  link             String?\n  projects         Project[] @relation(\"ExperienceProjects\")\n  created_at       DateTime  @default(now())\n  updated_at       DateTime  @updatedAt\n\n  @@map(\"experience\")\n}\n\nmodel Project {\n  id              Int         @id @default(autoincrement())\n  title           String\n  description     String?\n  fullDescription String?\n  image           String\n  link            String?\n  type            String?\n  tags            String[]\n  experienceId    Int?\n  experience      Experience? @relation(\"ExperienceProjects\", fields: [experienceId], references: [id])\n  created_at      DateTime    @default(now())\n  updated_at      DateTime    @updatedAt\n\n  @@map(\"project\")\n}\n",
+  "inlineSchemaHash": "9940a7bb373c3d23f4024e461e6a1cb2d977c0b51fb2e31721964d79eeacdd44",
   "copyEngine": true
 }
 config.dirname = '/'

@@ -26,7 +26,7 @@ const {
   Public,
   getRuntime,
   createParam,
-} = require('./runtime/wasm-compiler-edge.js')
+} = require('./runtime/wasm-engine-edge.js')
 
 
 const Prisma = {}
@@ -173,7 +173,7 @@ const config = {
       "fromEnvVar": null
     },
     "config": {
-      "engineType": "client"
+      "engineType": "library"
     },
     "binaryTargets": [
       {
@@ -187,7 +187,8 @@ const config = {
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
-    "rootEnvPath": null
+    "rootEnvPath": null,
+    "schemaEnvPath": "../../../.env"
   },
   "relativePath": "../../../prisma",
   "clientVersion": "6.18.0",
@@ -205,23 +206,23 @@ const config = {
       }
     }
   },
-  "inlineSchema": "generator client {\n  provider   = \"prisma-client-js\"\n  output     = \"../src/generated/client\"\n  engineType = \"client\" // Gera só JS, sem Rust binaries\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nmodel ContactMessage {\n  id         Int      @id @default(autoincrement())\n  name       String   @db.VarChar(50)\n  email      String   @db.VarChar(100)\n  message    String   @db.Text\n  created_at DateTime @default(now())\n  is_read    Boolean  @default(false)\n\n  @@map(\"contact_message\")\n}\n\nmodel Admin {\n  id       Int    @id @default(autoincrement())\n  email    String @unique @db.VarChar(100)\n  password String @db.VarChar(255) // hash da senha\n\n  @@map(\"admin\")\n}\n\nmodel Experience {\n  id               Int       @id @default(autoincrement())\n  title            String\n  company          String?\n  period           String\n  description      String?\n  fullDescription  String\n  responsibilities String[]\n  technologies     String[]\n  image            String\n  link             String?\n  projects         Project[] @relation(\"ExperienceProjects\")\n  created_at       DateTime  @default(now())\n  updated_at       DateTime  @updatedAt\n\n  @@map(\"experience\")\n}\n\nmodel Project {\n  id              Int         @id @default(autoincrement())\n  title           String\n  description     String?\n  fullDescription String?\n  image           String\n  link            String?\n  type            String?\n  tags            String[]\n  experienceId    Int?\n  experience      Experience? @relation(\"ExperienceProjects\", fields: [experienceId], references: [id])\n  created_at      DateTime    @default(now())\n  updated_at      DateTime    @updatedAt\n\n  @@map(\"project\")\n}\n",
-  "inlineSchemaHash": "dbcaea0f98671cabbb7557dbacec06bab3a266b892b538f6fcfc63f1d4fba008",
+  "inlineSchema": "generator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/generated/client\"\n}\n\ndatasource db {\n  provider  = \"postgresql\"\n  url       = env(\"DATABASE_URL\")\n  directUrl = env(\"DIRECT_URL\")\n}\n\nmodel ContactMessage {\n  id         Int      @id @default(autoincrement())\n  name       String   @db.VarChar(50)\n  email      String   @db.VarChar(100)\n  message    String   @db.Text\n  created_at DateTime @default(now())\n  is_read    Boolean  @default(false)\n\n  @@map(\"contact_message\")\n}\n\nmodel Admin {\n  id       Int    @id @default(autoincrement())\n  email    String @unique @db.VarChar(100)\n  password String @db.VarChar(255) // hash da senha\n\n  @@map(\"admin\")\n}\n\nmodel Experience {\n  id               Int       @id @default(autoincrement())\n  title            String\n  company          String?\n  period           String\n  description      String?\n  fullDescription  String\n  responsibilities String[]\n  technologies     String[]\n  image            String\n  link             String?\n  projects         Project[] @relation(\"ExperienceProjects\")\n  created_at       DateTime  @default(now())\n  updated_at       DateTime  @updatedAt\n\n  @@map(\"experience\")\n}\n\nmodel Project {\n  id              Int         @id @default(autoincrement())\n  title           String\n  description     String?\n  fullDescription String?\n  image           String\n  link            String?\n  type            String?\n  tags            String[]\n  experienceId    Int?\n  experience      Experience? @relation(\"ExperienceProjects\", fields: [experienceId], references: [id])\n  created_at      DateTime    @default(now())\n  updated_at      DateTime    @updatedAt\n\n  @@map(\"project\")\n}\n",
+  "inlineSchemaHash": "9940a7bb373c3d23f4024e461e6a1cb2d977c0b51fb2e31721964d79eeacdd44",
   "copyEngine": true
 }
 config.dirname = '/'
 
 config.runtimeDataModel = JSON.parse("{\"models\":{\"ContactMessage\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"name\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"message\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"is_read\",\"kind\":\"scalar\",\"type\":\"Boolean\"}],\"dbName\":\"contact_message\"},\"Admin\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"email\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"password\",\"kind\":\"scalar\",\"type\":\"String\"}],\"dbName\":\"admin\"},\"Experience\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"company\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"period\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"responsibilities\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"technologies\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"link\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"projects\",\"kind\":\"object\",\"type\":\"Project\",\"relationName\":\"ExperienceProjects\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updated_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"experience\"},\"Project\":{\"fields\":[{\"name\":\"id\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"title\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"description\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"fullDescription\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"image\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"link\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"type\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"tags\",\"kind\":\"scalar\",\"type\":\"String\"},{\"name\":\"experienceId\",\"kind\":\"scalar\",\"type\":\"Int\"},{\"name\":\"experience\",\"kind\":\"object\",\"type\":\"Experience\",\"relationName\":\"ExperienceProjects\"},{\"name\":\"created_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"},{\"name\":\"updated_at\",\"kind\":\"scalar\",\"type\":\"DateTime\"}],\"dbName\":\"project\"}},\"enums\":{},\"types\":{}}")
 defineDmmfProperty(exports.Prisma, config.runtimeDataModel)
-config.engineWasm = undefined
-config.compilerWasm = {
-  getRuntime: async () => require('./query_compiler_bg.js'),
-  getQueryCompilerWasmModule: async () => {
-    const loader = (await import('#wasm-compiler-loader')).default
-    const compiler = (await loader).default
-    return compiler
+config.engineWasm = {
+  getRuntime: async () => require('./query_engine_bg.js'),
+  getQueryEngineWasmModule: async () => {
+    const loader = (await import('#wasm-engine-loader')).default
+    const engine = (await loader).default
+    return engine
   }
 }
+config.compilerWasm = undefined
 
 config.injectableEdgeEnv = () => ({
   parsed: {
