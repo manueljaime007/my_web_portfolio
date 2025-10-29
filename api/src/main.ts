@@ -1,3 +1,4 @@
+// src/main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
@@ -6,14 +7,11 @@ import express from 'express';
 const server = express();
 const adapter = new ExpressAdapter(server);
 
-/**
- * Inicializa o NestJS com ExpressAdapter
- */
 export async function createApp() {
   const app = await NestFactory.create(AppModule, adapter);
   app.setGlobalPrefix('api/v1');
   app.enableCors();
-  await app.init();
+  await app.init(); // Inicializa sem listen()
   return app;
 }
 
