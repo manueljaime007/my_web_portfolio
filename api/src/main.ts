@@ -1,13 +1,13 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ExpressAdapter } from '@nestjs/platform-express';
-import express from 'express';
+import express, { Express } from 'express';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-export async function bootstrap(isServerless = false): Promise<any> {
-  const server = express();
+const server: Express = express();
+
+export async function createNestApp(): Promise<Express> {
   const app = await NestFactory.create(AppModule, new ExpressAdapter(server));
-
   app.setGlobalPrefix('api/v1');
   app.enableCors();
 
@@ -19,20 +19,17 @@ export async function bootstrap(isServerless = false): Promise<any> {
     .addTag('contacts')
     .addTag('experiences')
     .build();
-
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api/v1/docs', app, document);
 
-  if (!isServerless) {
-    const PORT = process.env.PORT || 3000;
-    await app.listen(PORT);
-    console.log(`🚀 Server running at: http://localhost:${PORT}/api/v1`);
-  }
-
-  await app.init();
+  await app.init(); // necessário para serverless
   return server;
 }
 
+// Se estiver rodando local
 if (require.main === module) {
-  bootstrap();
+  createNestApp().then(app => {
+    const PORT = process.env.PORT || 3000;
+    app.listen(PORT, () => console.log(`🚀 Server running at http://localhost:${PORT}/api/v1`));
+  });
 }
