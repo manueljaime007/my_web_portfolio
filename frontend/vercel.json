@@ -12,3 +12,4 @@
     { "src": "/(.*)", "dest": "dist/src/main.js" }
   ]
 }
+
