@@ -8,24 +8,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Project } from '@/data/projects';
 import { useEffect, useState } from 'react';
 
-// export const projects: Project[] = [
-//   {
-//     id: "1 ",
-//     title: "E-commerce Platform",
-//     description: "Plataforma completa de e-commerce com painel administrativo",
-//     fullDescription:
-//       "Plataforma de e-commerce desenvolvida com React, Node.js e PostgreSQL. Inclui sistema de pagamentos, gestão de produtos, carrinho de compras e painel administrativo completo.",
-//     image: "/placeholder.svg",
-//     tags: ["React", "Node.js", "PostgreSQL", "TypeScript"],
-//     type: "individual",
-//     links: {
-//       site: "https://example.com",
-//       github: "https://github.com/user/project",
-//     },
-//   },
-
-// ];
-
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -39,7 +21,7 @@ export default function ProjectDetail() {
 
       console.log(data)
 
-      const adaptado: Project = {
+      const adapted_data: Project = {
         id: data.id,
         title: data.title,
         description: data.description,
@@ -55,21 +37,14 @@ export default function ProjectDetail() {
         }
       };
 
-      setProject(adaptado);
+      setProject(adapted_data);
     } catch (error) {
       console.error('Erro ao carregar projetos:', error);
     }
   }
-  // Carregar projetos apenas uma vez
+
   useEffect(() => {
-
-    // const interval = setInterval(() => {
-    //   carregarProjecto('http://192.168.18.4:9090/api/v1/projects');
-    // }, 100000)
-
-    carregarProjecto(`http://192.168.18.4:9090/api/v1/projects/${id}`);
-
-    // return () => clearInterval(interval);
+    carregarProjecto(`https://guanadev.vercel.app/api/v1/projects/${id}`);
   }, []);
 
   console.log(id)
@@ -85,7 +60,7 @@ export default function ProjectDetail() {
     );
   }
 
- 
+
 
   return (
     <div className="container mx-auto px-4 py-16">
@@ -115,9 +90,9 @@ export default function ProjectDetail() {
 
         <img
           src={
-            project.image && project.image == '' 
-            ? project.image
-            : '/placeholder.svg'
+            project.image && project.image == ''
+              ? project.image
+              : '/placeholder.svg'
           }
 
 

@@ -8,24 +8,27 @@ import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { Experience } from '@/interfaces/Experience';
 
-let experiences = []
-
-
-const [exp, setExp] = useState<Experience[]>([])
-
-async function loadExp(url: string) {
-  const res = await fetch(url);
-  const data = await res.json()
-  console.log(data)
-}
-
-useEffect(() => {
-
-}, [])
 
 
 
 export default function Experiences() {
+
+  let experiences = []
+
+
+  const [exp, setExp] = useState<Experience[]>([])
+
+  async function loadExp(url: string) {
+    const res = await fetch(url);
+    const data = await res.json()
+    console.log(data)
+  }
+
+  useEffect(() => {
+
+  }, [])
+
+
   return (
     <div className="container mx-auto px-4 py-16">
       <motion.div

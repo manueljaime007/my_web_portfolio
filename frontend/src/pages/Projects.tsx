@@ -46,15 +46,13 @@ export default function Projects() {
     }
   }
 
-  // Carregar projetos apenas uma vez
   useEffect(() => {
 
     const interval = setInterval(() => {
-      carregarProjectos('https://guanabee-portfolio-mj.vercel.app/api/v1/projects');
+      carregarProjectos('https://guanadev.vercel.app/api/v1/projects');
     }, 100000)
 
-    // carregarProjectos('http://192.168.18.13:9090/api/v1/projects');
-    carregarProjectos('https://guanabee-portfolio-mj.vercel.app/api/v1/projects');
+    carregarProjectos('https://guanadev.vercel.app/api/v1/projects');
 
     return () => clearInterval(interval);
   }, []);
