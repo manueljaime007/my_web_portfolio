@@ -3,9 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
-
 import { SiGithub } from 'react-icons/si'
-
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -14,14 +12,11 @@ import { Project } from '@/interfaces/Project';
 
 export default function Projects() {
 
-
   const [loading, setLoading] = useState(true);
-
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [projectos, setProjectos] = useState<Project[]>([]);
 
-  // Função para carregar projetos da API
   async function loadProjects(url: string) {
     try {
       setLoading(true);

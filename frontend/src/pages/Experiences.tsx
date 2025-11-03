@@ -3,20 +3,12 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-
 import { useState, useEffect } from 'react';
 import { Experience } from '@/interfaces/Experience';
-
-
-
 
 export default function Experiences() {
 
   const [loading, setLoading] = useState(true);
-
-
-
-
   const [experiences, setExps] = useState<Experience[]>([])
 
   async function loadExperiences(url: string) {
