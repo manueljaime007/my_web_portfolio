@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FilterType, mockImages } from '@/data/mockImages';
+import { galleryImages } from '@/data/mockImages';
+import { FilterType } from '@/interfaces/GalleryImage';
 
 
 const filters: { value: FilterType; label: string }[] = [
@@ -16,8 +17,8 @@ const Gallery = () => {
   const [activeFilter, setActiveFilter] = useState<FilterType>('all');
 
   const filteredImages = activeFilter === 'all'
-    ? mockImages
-    : mockImages.filter(img => img.category === activeFilter);
+    ? galleryImages
+    : galleryImages.filter(img => img.category === activeFilter);
 
   return (
     <div className="min-h-screen py-20">

@@ -4,20 +4,28 @@ import { ArrowLeft, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { experiences } from '@/data/experiences';
 import { Experience } from '@/interfaces/Experience';
 import { useEffect, useState } from 'react';
 
 export default function ExperienceDetail() {
+  const [loading, setLoading] = useState(true);
+
   const { id } = useParams();
   // const experience = experiences.find(e => e.id === id);
 
   const [experience, setExperience] = useState<Experience | undefined>(undefined)
 
   async function loadExperience(url: string) {
-    const res = await fetch(url);
-    const data = await res.json()
-    setExperience(data)
+
+    try {
+      const res = await fetch(url);
+      const data = await res.json()
+      setExperience(data)
+    } catch (error) {
+      console.error(`Erro ao carregar experiência. ${error}`)
+    } finally {
+      setLoading(false)
+    }
   }
 
   useEffect(() => {
@@ -26,6 +34,18 @@ export default function ExperienceDetail() {
 
 
 
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+          className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full"
+        />
+        <p className="mt-4 text-muted-foreground">Carregando experiência...</p>
+      </div>
+    );
+  }
 
   if (!experience) {
     return (
@@ -71,7 +91,7 @@ export default function ExperienceDetail() {
         <img
           src={
             experience.image && experience.image == ''
-            ? experience.image : '/placeholder.svg' 
+              ? experience.image : '/placeholder.svg'
           }
           alt={experience.company}
           className="w-full h-64 object-cover rounded-lg"
@@ -119,7 +139,7 @@ export default function ExperienceDetail() {
                     <li key={index} className="border rounded-md p-4 hover:bg-muted/30 transition">
                       <div className="flex justify-between items-start">
                         <div>
-                          <h4 className="font-semibold">{project.name}</h4>
+                          <h4 className="font-semibold">{project.title}</h4>
                           <p className="text-muted-foreground">{project.description}</p>
                         </div>
                         {project.link && (

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { ExternalLink} from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 
 import { SiGithub } from 'react-icons/si'
@@ -13,18 +13,22 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Project } from '@/interfaces/Project';
 
 export default function Projects() {
+
+
+  const [loading, setLoading] = useState(true);
+
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [projectos, setProjectos] = useState<Project[]>([]);
 
   // Função para carregar projetos da API
-  async function carregarProjectos(url: string) {
+  async function loadProjects(url: string) {
     try {
+      setLoading(true);
       const res = await fetch(url);
       const data = await res.json();
 
-      // Mapear dados da API para o formato esperado
-      const adaptados: Project[] = data.map((p: any) => ({
+      const adapted_data: Project[] = data.map((p: any) => ({
         id: String(p.id),
         title: p.title,
         description: p.description,
@@ -40,19 +44,22 @@ export default function Projects() {
         }
       }));
 
-      setProjectos(adaptados);
+      setProjectos(adapted_data);
     } catch (error) {
       console.error('Erro ao carregar projetos:', error);
+    } finally {
+      setLoading(false);
     }
   }
+
 
   useEffect(() => {
 
     const interval = setInterval(() => {
-      carregarProjectos('https://guanadev.vercel.app/api/v1/projects');
+      loadProjects('https://guanadev.vercel.app/api/v1/projects');
     }, 100000)
 
-    carregarProjectos('https://guanadev.vercel.app/api/v1/projects');
+    loadProjects('https://guanadev.vercel.app/api/v1/projects');
 
     return () => clearInterval(interval);
   }, []);
@@ -71,6 +78,20 @@ export default function Projects() {
       )
       .filter(p => !selectedTech || p.tags.includes(selectedTech));
   };
+
+
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+          className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full"
+        />
+        <p className="mt-4 text-muted-foreground">Carregando projetos...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="container mx-auto px-4 py-16 flex flex-col">

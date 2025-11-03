@@ -2,7 +2,7 @@
 
 import { GalleryImage } from "@/interfaces/GalleryImage";
 
-export const mockImages: GalleryImage[] = [
+export const galleryImages: GalleryImage[] = [
   {
     id: "1",
     url: "https://res.cloudinary.com/drretrdr2/image/upload/v1761531609/WhatsApp_Image_2025-06-14_at_23.49.28_bzvm5x.jpg",

@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Checkbox } from '@/components/ui/checkbox';
-import { useToast } from '@/hooks/use-toast';
+import { useToast } from '../hooks/use-toast';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -36,8 +36,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    // postData("http://192.168.18.4:9090/api/v1/contacts")
-    postData('https://guanabee-portfolio-mj.vercel.app/api/v1/contacts');
+    postData('https://guanadev.vercel.app/api/v1/contacts');
 
     toast({
       title: 'Mensagem enviada!',

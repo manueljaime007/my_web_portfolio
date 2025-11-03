@@ -5,21 +5,25 @@ import { SiGithub } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
-import { Project } from '@/data/projects';
+import { Project } from '@/interfaces/Project';
 import { useEffect, useState } from 'react';
 
 
 export default function ProjectDetail() {
+
+  const [loading, setLoading] = useState(true);
+
   const { id } = useParams();
   const [project, setProject] = useState<Project | undefined>(undefined)
 
   // Função para carregar projetos da API
   async function carregarProjecto(url: string) {
     try {
+
+      setLoading(true);
+
       const res = await fetch(url);
       const data = await res.json();
-
-      console.log(data)
 
       const adapted_data: Project = {
         id: data.id,
@@ -40,6 +44,8 @@ export default function ProjectDetail() {
       setProject(adapted_data);
     } catch (error) {
       console.error('Erro ao carregar projetos:', error);
+    } finally {
+      setLoading(false)
     }
   }
 
@@ -47,8 +53,19 @@ export default function ProjectDetail() {
     carregarProjecto(`https://guanadev.vercel.app/api/v1/projects/${id}`);
   }, []);
 
-  console.log(id)
 
+  if (loading) {
+    return (
+      <div className="flex flex-col items-center justify-center h-screen">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
+          className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full"
+        />
+        <p className="mt-4 text-muted-foreground">Carregando projeto...</p>
+      </div>
+    );
+  }
   if (!project) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
