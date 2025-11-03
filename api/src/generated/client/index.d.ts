@@ -3417,7 +3417,7 @@ export namespace Prisma {
     fullDescription: string | null
     responsibilities: string[]
     technologies: string[]
-    image: string
+    image: string | null
     link: string | null
     created_at: Date
     updated_at: Date
@@ -3526,7 +3526,7 @@ export namespace Prisma {
       fullDescription: string | null
       responsibilities: string[]
       technologies: string[]
-      image: string
+      image: string | null
       link: string | null
       created_at: Date
       updated_at: Date
@@ -5865,7 +5865,7 @@ export namespace Prisma {
     fullDescription?: StringNullableFilter<"Experience"> | string | null
     responsibilities?: StringNullableListFilter<"Experience">
     technologies?: StringNullableListFilter<"Experience">
-    image?: StringFilter<"Experience"> | string
+    image?: StringNullableFilter<"Experience"> | string | null
     link?: StringNullableFilter<"Experience"> | string | null
     created_at?: DateTimeFilter<"Experience"> | Date | string
     updated_at?: DateTimeFilter<"Experience"> | Date | string
@@ -5881,7 +5881,7 @@ export namespace Prisma {
     fullDescription?: SortOrderInput | SortOrder
     responsibilities?: SortOrder
     technologies?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     link?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -5900,7 +5900,7 @@ export namespace Prisma {
     fullDescription?: StringNullableFilter<"Experience"> | string | null
     responsibilities?: StringNullableListFilter<"Experience">
     technologies?: StringNullableListFilter<"Experience">
-    image?: StringFilter<"Experience"> | string
+    image?: StringNullableFilter<"Experience"> | string | null
     link?: StringNullableFilter<"Experience"> | string | null
     created_at?: DateTimeFilter<"Experience"> | Date | string
     updated_at?: DateTimeFilter<"Experience"> | Date | string
@@ -5916,7 +5916,7 @@ export namespace Prisma {
     fullDescription?: SortOrderInput | SortOrder
     responsibilities?: SortOrder
     technologies?: SortOrder
-    image?: SortOrder
+    image?: SortOrderInput | SortOrder
     link?: SortOrderInput | SortOrder
     created_at?: SortOrder
     updated_at?: SortOrder
@@ -5939,7 +5939,7 @@ export namespace Prisma {
     fullDescription?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     responsibilities?: StringNullableListFilter<"Experience">
     technologies?: StringNullableListFilter<"Experience">
-    image?: StringWithAggregatesFilter<"Experience"> | string
+    image?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     link?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     created_at?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
     updated_at?: DateTimeWithAggregatesFilter<"Experience"> | Date | string
@@ -6139,7 +6139,7 @@ export namespace Prisma {
     fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
-    image: string
+    image?: string | null
     link?: string | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -6155,7 +6155,7 @@ export namespace Prisma {
     fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
-    image: string
+    image?: string | null
     link?: string | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -6170,7 +6170,7 @@ export namespace Prisma {
     fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6186,7 +6186,7 @@ export namespace Prisma {
     fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6202,7 +6202,7 @@ export namespace Prisma {
     fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
-    image: string
+    image?: string | null
     link?: string | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -6216,7 +6216,7 @@ export namespace Prisma {
     fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6231,7 +6231,7 @@ export namespace Prisma {
     fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7046,7 +7046,7 @@ export namespace Prisma {
     fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
-    image: string
+    image?: string | null
     link?: string | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -7061,7 +7061,7 @@ export namespace Prisma {
     fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
-    image: string
+    image?: string | null
     link?: string | null
     created_at?: Date | string
     updated_at?: Date | string
@@ -7091,7 +7091,7 @@ export namespace Prisma {
     fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7106,7 +7106,7 @@ export namespace Prisma {
     fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
-    image?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     link?: NullableStringFieldUpdateOperationsInput | string | null
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
     updated_at?: DateTimeFieldUpdateOperationsInput | Date | string

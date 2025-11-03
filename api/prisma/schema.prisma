@@ -35,9 +35,9 @@ model Experience {
   period           String
   description      String?
   fullDescription  String?   @map("full_description")
-  responsibilities String[]
-  technologies     String[]
-  image            String
+  responsibilities String[]  @default([])
+  technologies     String[]  @default([])
+  image            String?
   link             String?
   projects         Project[] @relation("ExperienceProjects")
   created_at       DateTime  @default(now())
