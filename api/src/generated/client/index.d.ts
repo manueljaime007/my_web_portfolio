@@ -6241,7 +6241,7 @@ export namespace Prisma {
     title: string
     description?: string | null
     fullDescription?: string | null
-    image: string
+    image?: string
     link?: string | null
     type?: string | null
     tags?: ProjectCreatetagsInput | string[]
@@ -6255,7 +6255,7 @@ export namespace Prisma {
     title: string
     description?: string | null
     fullDescription?: string | null
-    image: string
+    image?: string
     link?: string | null
     type?: string | null
     tags?: ProjectCreatetagsInput | string[]
@@ -6296,7 +6296,7 @@ export namespace Prisma {
     title: string
     description?: string | null
     fullDescription?: string | null
-    image: string
+    image?: string
     link?: string | null
     type?: string | null
     tags?: ProjectCreatetagsInput | string[]
@@ -6974,7 +6974,7 @@ export namespace Prisma {
     title: string
     description?: string | null
     fullDescription?: string | null
-    image: string
+    image?: string
     link?: string | null
     type?: string | null
     tags?: ProjectCreatetagsInput | string[]
@@ -6987,7 +6987,7 @@ export namespace Prisma {
     title: string
     description?: string | null
     fullDescription?: string | null
-    image: string
+    image?: string
     link?: string | null
     type?: string | null
     tags?: ProjectCreatetagsInput | string[]
@@ -7117,7 +7117,7 @@ export namespace Prisma {
     title: string
     description?: string | null
     fullDescription?: string | null
-    image: string
+    image?: string
     link?: string | null
     type?: string | null
     tags?: ProjectCreatetagsInput | string[]

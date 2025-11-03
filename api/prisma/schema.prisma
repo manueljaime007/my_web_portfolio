@@ -51,7 +51,7 @@ model Project {
   title           String
   description     String?
   fullDescription String?
-  image           String
+  image           String      @default("")
   link            String?
   type            String?
   tags            String[]
