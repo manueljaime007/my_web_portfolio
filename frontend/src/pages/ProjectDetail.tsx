@@ -58,11 +58,12 @@ export default function ProjectDetail() {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
         <motion.div
+          key="loader"
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
           className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full"
         />
-        <p className="mt-4 text-muted-foreground">Carregando projeto...</p>
+        <p className="mt-4 text-muted-foreground">Carregando projetos...</p>
       </div>
     );
   }

@@ -79,6 +79,7 @@ export default function Projects() {
     return (
       <div className="flex flex-col items-center justify-center h-screen">
         <motion.div
+          key="loader"
           animate={{ rotate: 360 }}
           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
           className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full"
@@ -87,7 +88,6 @@ export default function Projects() {
       </div>
     );
   }
-
   return (
     <div className="container mx-auto px-4 py-16 flex flex-col">
       <motion.div
