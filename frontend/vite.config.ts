@@ -7,17 +7,11 @@ export default defineConfig(({ mode }) => ({
     host: "::",
     port: 8080,
   },
-  base: "/", // Mude para "/" em vez de "./"
+  base: "./",
   plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
-  },
-  build: {
-    outDir: "dist",
-    assetsDir: "assets",
-    // Adicione esta configuração para garantir que os assets sejam servidos corretamente
-    assetsInlineLimit: 4096,
   },
 }));
