@@ -1,19 +1,6 @@
 // https://collection.cloudinary.com/drretrdr2/23b64fd32cc790665332f34dd3c49c69
 
-export type FilterType =
-  | "all"
-  | "events"
-  | "team"
-  | "academy"
-  | "projects"
-  | "hackathon";
-
-export interface GalleryImage {
-  id: string;
-  url: string;
-  category: FilterType;
-  alt: string;
-}
+import { GalleryImage } from "@/interfaces/GalleryImage";
 
 export const mockImages: GalleryImage[] = [
   {
@@ -95,8 +82,6 @@ export const mockImages: GalleryImage[] = [
     alt: "Team 4",
   },
 
-
-  
   {
     id: "14",
     url: "https://res.cloudinary.com/drretrdr2/image/upload/v1761531594/IMG-20250615-WA0002_1_olhcyk.jpg",

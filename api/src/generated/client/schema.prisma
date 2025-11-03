@@ -34,7 +34,7 @@ model Experience {
   company          String?
   period           String
   description      String?
-  fullDescription  String
+  fullDescription  String?   @map("full_description")
   responsibilities String[]
   technologies     String[]
   image            String

@@ -3414,7 +3414,7 @@ export namespace Prisma {
     company: string | null
     period: string
     description: string | null
-    fullDescription: string
+    fullDescription: string | null
     responsibilities: string[]
     technologies: string[]
     image: string
@@ -3523,7 +3523,7 @@ export namespace Prisma {
       company: string | null
       period: string
       description: string | null
-      fullDescription: string
+      fullDescription: string | null
       responsibilities: string[]
       technologies: string[]
       image: string
@@ -5862,7 +5862,7 @@ export namespace Prisma {
     company?: StringNullableFilter<"Experience"> | string | null
     period?: StringFilter<"Experience"> | string
     description?: StringNullableFilter<"Experience"> | string | null
-    fullDescription?: StringFilter<"Experience"> | string
+    fullDescription?: StringNullableFilter<"Experience"> | string | null
     responsibilities?: StringNullableListFilter<"Experience">
     technologies?: StringNullableListFilter<"Experience">
     image?: StringFilter<"Experience"> | string
@@ -5878,7 +5878,7 @@ export namespace Prisma {
     company?: SortOrderInput | SortOrder
     period?: SortOrder
     description?: SortOrderInput | SortOrder
-    fullDescription?: SortOrder
+    fullDescription?: SortOrderInput | SortOrder
     responsibilities?: SortOrder
     technologies?: SortOrder
     image?: SortOrder
@@ -5897,7 +5897,7 @@ export namespace Prisma {
     company?: StringNullableFilter<"Experience"> | string | null
     period?: StringFilter<"Experience"> | string
     description?: StringNullableFilter<"Experience"> | string | null
-    fullDescription?: StringFilter<"Experience"> | string
+    fullDescription?: StringNullableFilter<"Experience"> | string | null
     responsibilities?: StringNullableListFilter<"Experience">
     technologies?: StringNullableListFilter<"Experience">
     image?: StringFilter<"Experience"> | string
@@ -5913,7 +5913,7 @@ export namespace Prisma {
     company?: SortOrderInput | SortOrder
     period?: SortOrder
     description?: SortOrderInput | SortOrder
-    fullDescription?: SortOrder
+    fullDescription?: SortOrderInput | SortOrder
     responsibilities?: SortOrder
     technologies?: SortOrder
     image?: SortOrder
@@ -5936,7 +5936,7 @@ export namespace Prisma {
     company?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     period?: StringWithAggregatesFilter<"Experience"> | string
     description?: StringNullableWithAggregatesFilter<"Experience"> | string | null
-    fullDescription?: StringWithAggregatesFilter<"Experience"> | string
+    fullDescription?: StringNullableWithAggregatesFilter<"Experience"> | string | null
     responsibilities?: StringNullableListFilter<"Experience">
     technologies?: StringNullableListFilter<"Experience">
     image?: StringWithAggregatesFilter<"Experience"> | string
@@ -6136,7 +6136,7 @@ export namespace Prisma {
     company?: string | null
     period: string
     description?: string | null
-    fullDescription: string
+    fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
     image: string
@@ -6152,7 +6152,7 @@ export namespace Prisma {
     company?: string | null
     period: string
     description?: string | null
-    fullDescription: string
+    fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
     image: string
@@ -6167,7 +6167,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     period?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    fullDescription?: StringFieldUpdateOperationsInput | string
+    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
     image?: StringFieldUpdateOperationsInput | string
@@ -6183,7 +6183,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     period?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    fullDescription?: StringFieldUpdateOperationsInput | string
+    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
     image?: StringFieldUpdateOperationsInput | string
@@ -6199,7 +6199,7 @@ export namespace Prisma {
     company?: string | null
     period: string
     description?: string | null
-    fullDescription: string
+    fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
     image: string
@@ -6213,7 +6213,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     period?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    fullDescription?: StringFieldUpdateOperationsInput | string
+    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
     image?: StringFieldUpdateOperationsInput | string
@@ -6228,7 +6228,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     period?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    fullDescription?: StringFieldUpdateOperationsInput | string
+    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
     image?: StringFieldUpdateOperationsInput | string
@@ -7043,7 +7043,7 @@ export namespace Prisma {
     company?: string | null
     period: string
     description?: string | null
-    fullDescription: string
+    fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
     image: string
@@ -7058,7 +7058,7 @@ export namespace Prisma {
     company?: string | null
     period: string
     description?: string | null
-    fullDescription: string
+    fullDescription?: string | null
     responsibilities?: ExperienceCreateresponsibilitiesInput | string[]
     technologies?: ExperienceCreatetechnologiesInput | string[]
     image: string
@@ -7088,7 +7088,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     period?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    fullDescription?: StringFieldUpdateOperationsInput | string
+    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
     image?: StringFieldUpdateOperationsInput | string
@@ -7103,7 +7103,7 @@ export namespace Prisma {
     company?: NullableStringFieldUpdateOperationsInput | string | null
     period?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
-    fullDescription?: StringFieldUpdateOperationsInput | string
+    fullDescription?: NullableStringFieldUpdateOperationsInput | string | null
     responsibilities?: ExperienceUpdateresponsibilitiesInput | string[]
     technologies?: ExperienceUpdatetechnologiesInput | string[]
     image?: StringFieldUpdateOperationsInput | string

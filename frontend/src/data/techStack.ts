@@ -1,9 +1,4 @@
-export interface Tech {
-  name: string;
-  icon: string;
-  level?: string;
-  category: string;
-}
+import { Tech } from "@/interfaces/Tech";
 
 export const techStack: Tech[] = [
   { name: "HTML", icon: "SiHtml5", level: "Avançado", category: "Frontend" },

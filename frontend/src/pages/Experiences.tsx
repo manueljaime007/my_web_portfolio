@@ -3,7 +3,27 @@ import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { experiences } from '@/data/experiences';
+// import { experiences } from '@/data/experiences';
+
+import { useState, useEffect } from 'react';
+import { Experience } from '@/interfaces/Experience';
+
+let experiences = []
+
+
+const [exp, setExp] = useState<Experience[]>([])
+
+async function loadExp(url: string) {
+  const res = await fetch(url);
+  const data = await res.json()
+  console.log(data)
+}
+
+useEffect(() => {
+
+}, [])
+
+
 
 export default function Experiences() {
   return (

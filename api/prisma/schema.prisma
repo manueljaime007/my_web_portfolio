@@ -24,6 +24,7 @@ model Admin {
   id       Int    @id @default(autoincrement())
   email    String @unique @db.VarChar(100)
   password String @db.VarChar(255) // hash da senha
+
   @@map("admin")
 }
 
@@ -33,7 +34,7 @@ model Experience {
   company          String?
   period           String
   description      String?
-  fullDescription  String
+  fullDescription  String?   @map("full_description")
   responsibilities String[]
   technologies     String[]
   image            String
