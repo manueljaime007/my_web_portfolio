@@ -7,18 +7,25 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 const server = express();
 const adapter = new ExpressAdapter(server);
-//
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, adapter);
   app.setGlobalPrefix('api/v1');
-  app.enableCors();
+  app.enableCors({
+    // origin: ['https://site1.com', 'http://localhost:5173'],
+    origin: '*',
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true,
+    optionsSuccessStatus: 200,
+  });
 
   // Configuração do Swagger
-  
   const config = new DocumentBuilder()
     .setTitle('Meu Portfólio Web - API')
-    .setDescription('Documentação da API do portfólio profissional do Manuel Jaime')
+    .setDescription(
+      'Documentação da API do portfólio profissional do Manuel Jaime',
+    )
     .setVersion('1.0')
     .addTag('projects')
     .addTag('contacts')

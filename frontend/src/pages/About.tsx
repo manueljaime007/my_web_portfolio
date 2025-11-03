@@ -21,13 +21,13 @@ export default function About() {
           <CardContent className="pt-6 space-y-6">
             <div className="prose prose-lg dark:prose-invert max-w-none">
               <p>
-                Sou um desenvolvedor full-stack com forte experiência em tecnologias web modernas.
+                Sou um desenvolvedor full-stack em constante aprendizado, com foco em criar aplicações web modernas e bem estruturadas.
                 A minha jornada no desenvolvimento começou há vários anos, e desde então tenho me
                 dedicado a criar aplicações web escaláveis, eficientes e com excelente experiência de usuário.
               </p>
-              
+        
               <p>
-                Especializo-me em React, TypeScript, Node.js e arquitetura de aplicações modernas.
+                Trabalho com React, TypeScript e Node.js, criando aplicações robustas e alinhadas às boas práticas de desenvolvimento.
                 Tenho paixão por código limpo, boas práticas e por aprender constantemente novas
                 tecnologias para melhorar as minhas skills.
               </p>
@@ -40,7 +40,7 @@ export default function About() {
 
             <div className="grid md:grid-cols-2 gap-6 pt-6">
               <div className="text-center p-6 bg-muted rounded-lg">
-                <div className="text-4xl font-heading font-bold text-primary mb-2">3</div>
+                <div className="text-4xl font-heading font-bold text-primary mb-2">3+</div>
                 <div className="text-sm text-muted-foreground">Anos de experiência</div>
               </div>
               

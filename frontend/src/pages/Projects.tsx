@@ -47,10 +47,12 @@ export default function Projects() {
   useEffect(() => {
 
     const interval = setInterval(() => {
-      carregarProjectos('http://192.168.18.13:9090/api/v1/projects');
-    }, 100)
+      // carregarProjectos('http://192.168.18.13:9090/api/v1/projects');
+      carregarProjectos('https://guanabee-portfolio-mj.vercel.app/api/v1/projects');
+    }, 100000)
 
-    carregarProjectos('http://192.168.18.13:9090/api/v1/projects');
+    // carregarProjectos('http://192.168.18.13:9090/api/v1/projects');
+    carregarProjectos('https://guanabee-portfolio-mj.vercel.app/api/v1/projects');
 
     return () => clearInterval(interval);
   }, []);
@@ -71,7 +73,7 @@ export default function Projects() {
   };
 
   return (
-    <div className="container mx-auto px-4 py-16">
+    <div className="container mx-auto px-4 py-16 flex flex-col">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
