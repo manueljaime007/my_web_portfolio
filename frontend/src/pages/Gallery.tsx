@@ -71,10 +71,10 @@ const Gallery = () => {
                   transition={{ duration: 0.3 }}
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             ))}
           </div>
+
         </motion.div>
       </div>
     </div>
