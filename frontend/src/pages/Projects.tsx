@@ -139,7 +139,7 @@ export default function Projects() {
                       <CardHeader>
                         <img
                           src={
-                            projecto.image && projecto.image !== ''
+                            projecto.image && projecto.image == ''
                               ? projecto.image :
                               'placeholder.svg'
                           }

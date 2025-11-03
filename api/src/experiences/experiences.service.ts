@@ -20,7 +20,13 @@ export class ExperiencesService {
   }
 
   async findOne(id: number) {
-    return this.prisma.experience.findUnique({ where: { id } });
+    return this.prisma.experience.findUnique({
+      where: { id },
+      include: {
+        projects: true,
+        _count: true,
+      },
+    });
   }
 
   async update(id: number, data: Prisma.ExperienceUpdateInput) {

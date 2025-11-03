@@ -16,16 +16,17 @@ export default function Experiences() {
   let experiences = []
 
 
-  const [exp, setExp] = useState<Experience[]>([])
+  const [exps, setExps] = useState<Experience[]>([])
 
   async function loadExp(url: string) {
     const res = await fetch(url);
     const data = await res.json()
     console.log(data)
+    setExps(data)
   }
 
   useEffect(() => {
-
+    loadExp(`https://guanadev.vercel.app/api/v1/experiences`)
   }, [])
 
 
@@ -48,7 +49,7 @@ export default function Experiences() {
           {/* Timeline line */}
           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-border hidden md:block" />
           <div className="space-y-8">
-            {experiences.map((experience, index) => (
+            {exps.map((experience, index) => (
               <motion.div
                 key={experience.id}
                 initial={{ opacity: 0, x: -20 }}
@@ -62,13 +63,15 @@ export default function Experiences() {
                 <Card className="md:ml-20 hover-lift">
                   <CardContent className="p-6">
                     <div className="flex flex-col md:flex-row gap-6">
-                      {experience.image && (
-                        <img
-                          src={experience.image}
+                       <img
+                          src={
+                            experience.image && experience.image == ''
+                              ? experience.image :
+                              'placeholder.svg'
+                          }
                           alt={experience.company}
-                          className="w-full md:w-32 h-32 object-cover rounded-lg"
+                          className="w-1/2 h-48 object-cover rounded-lg mb-4"
                         />
-                      )}
 
                       <div className="flex-1 space-y-4">
                         <div>

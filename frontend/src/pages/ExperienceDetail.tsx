@@ -5,10 +5,27 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { experiences } from '@/data/experiences';
+import { Experience } from '@/interfaces/Experience';
+import { useEffect, useState } from 'react';
 
 export default function ExperienceDetail() {
   const { id } = useParams();
-  const experience = experiences.find(e => e.id === id);
+  // const experience = experiences.find(e => e.id === id);
+
+  const [experience, setExperience] = useState<Experience | undefined>(undefined)
+
+  async function loadExperience(url: string) {
+    const res = await fetch(url);
+    const data = await res.json()
+    setExperience(data)
+  }
+
+  useEffect(() => {
+    loadExperience(`https://guanadev.vercel.app/api/v1/experiences/${id}`)
+  }, [])
+
+
+
 
   if (!experience) {
     return (
@@ -36,19 +53,29 @@ export default function ExperienceDetail() {
           </Link>
         </Button>
 
+
         <div className="space-y-4">
           <div className="text-primary font-semibold">{experience.period}</div>
           <h1 className="text-4xl md:text-5xl font-heading font-bold">{experience.title}</h1>
           <p className="text-xl text-muted-foreground">{experience.company}</p>
         </div>
 
-        {experience.image && (
+        {/* {experience.image && (
           <img
             src={experience.image}
             alt={experience.company}
             className="w-full h-64 object-cover rounded-lg"
           />
-        )}
+        )} */}
+
+        <img
+          src={
+            experience.image && experience.image == ''
+            ? experience.image : '/placeholder.svg' 
+          }
+          alt={experience.company}
+          className="w-full h-64 object-cover rounded-lg"
+        />
 
         <Card>
           <CardContent className="pt-6 space-y-6">
