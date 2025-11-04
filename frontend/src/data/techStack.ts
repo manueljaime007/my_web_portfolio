@@ -24,7 +24,7 @@ export const techStack: Tech[] = [
   {
     name: "React Native",
     icon: "SiReact",
-    level: "Intermediário",
+    level: "Básico",
     category: "Frontend",
   },
   {
@@ -42,7 +42,7 @@ export const techStack: Tech[] = [
   {
     name: "Nativewind",
     icon: "SiTailwindcss",
-    level: "Intermediário",
+    level: "Básico",
     category: "Frontend",
   },
   {
@@ -54,13 +54,13 @@ export const techStack: Tech[] = [
   {
     name: "Node.js",
     icon: "SiNodedotjs",
-    level: "Avançado",
+    level: "Intermediário",
     category: "Backend",
   },
   {
     name: "Express",
     icon: "SiExpress",
-    level: "Avançado",
+    level: "Intermediário",
     category: "Backend",
   },
   {
@@ -85,13 +85,13 @@ export const techStack: Tech[] = [
   {
     name: "PostgreSQL",
     icon: "SiPostgresql",
-    level: "Intermediário",
+    level: "Básico",
     category: "Database",
   },
   {
     name: "SQLite",
     icon: "SiSqlite",
-    level: "Intermediário",
+    level: "Básico",
     category: "Database",
   },
   {
