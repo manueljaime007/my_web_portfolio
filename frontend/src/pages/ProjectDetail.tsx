@@ -63,7 +63,7 @@ export default function ProjectDetail() {
           transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
           className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full"
         />
-        <p className="mt-4 text-muted-foreground">Carregando projetos...</p>
+        <p className="mt-4 text-muted-foreground">Carregando projeto...</p>
       </div>
     );
   }

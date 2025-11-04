@@ -14,7 +14,7 @@ const navLinks = [
   { name: 'Galeria', path: '/galeria' },
   { name: 'Contacte-me', path: '/contact' },
 ];
-const LOGO_TITLE: string = "Manuel Jaime"
+const LOGO_TITLE: string = "Manuel Jaime";
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
