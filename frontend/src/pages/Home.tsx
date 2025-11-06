@@ -1,5 +1,6 @@
 import { ArrowRight, Download } from 'lucide-react';
 import { SiGithub, SiInstagram, SiLinkedin } from 'react-icons/si';
+import { FaDiscord } from 'react-icons/fa6';
 
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -76,14 +77,7 @@ export default function Home() {
                 >
                   <SiLinkedin className='mr-2 h-6 w-6' />
                 </a>
-                <a
-                  href="https://github.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <SiGithub className="h-6 w-6" />
-                </a>
+
                 <a
                   href="https://instagram.com"
                   target="_blank"
@@ -91,7 +85,15 @@ export default function Home() {
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
                   <SiInstagram className='mr-2 h-6 w-6' />
+                </a>
 
+                <a
+                  href="https://discord.com/channels/@me"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <FaDiscord className="h-6 w-6" />
                 </a>
               </div>
             </motion.div>
