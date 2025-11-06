@@ -13,7 +13,8 @@ async function bootstrap() {
   app.setGlobalPrefix('api/v1');
   app.enableCors({
     // origin: ['https://site1.com', 'http://localhost:5173'],
-    origin: '*',
+    // origin: '*',
+    origin: 'https://manueljaime.vercel.app',
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
