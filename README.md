@@ -47,7 +47,6 @@
 - Complete CRUD operations with validation and error handling.
 - Dynamic light/dark mode.
 - API documented with Swagger.
-<!-- -  Interactive and responsive dashboard. -->
 
 ---
 
