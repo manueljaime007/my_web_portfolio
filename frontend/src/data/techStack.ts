@@ -25,12 +25,12 @@ export const techStack: Tech[] = [
     name: "React Native",
     icon: "SiReact",
     level: "Básico",
-    category: "Frontend",
+    category: "Mobile",
   },
   {
     name: "Next.js",
     icon: "SiNextdotjs",
-    level: "Intermediário",
+    level: "Básico",
     category: "Frontend",
   },
   {
@@ -43,7 +43,7 @@ export const techStack: Tech[] = [
     name: "Nativewind",
     icon: "SiTailwindcss",
     level: "Básico",
-    category: "Frontend",
+    category: "Mobile",
   },
   {
     name: "Sass",
@@ -100,4 +100,23 @@ export const techStack: Tech[] = [
     level: "Intermediário",
     category: "Database",
   },
+  {
+    name: "Git",
+    icon: "SiGit",
+    level: "Intermediário",
+    category: "DevOps",
+  },
+  {
+    name: "Netlify",
+    icon: "SiNetlify",
+    level: "Básico",
+    category: "Cloud",
+  },
+  {
+    name: "Vercel",
+    icon: "SiVercel",
+    level: "Básico",
+    category: "Cloud",
+  },
+  
 ];

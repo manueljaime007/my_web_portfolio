@@ -4,8 +4,9 @@ import { Badge } from '@/components/ui/badge';
 import { techStack } from '@/data/techStack';
 import * as SimpleIcons from 'react-icons/si';
 import { useState } from 'react';
+import { categories } from '@/interfaces/Tech';
 
-const categories = ['Todos', 'Frontend', 'Backend', 'Database'];
+
 
 export default function TechStack() {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
