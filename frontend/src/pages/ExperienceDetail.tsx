@@ -7,16 +7,19 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Experience } from '@/interfaces/Experience';
 import { useEffect, useState } from 'react';
 
+
+// URL da API
+const API_BASE: string = import.meta.env.VITE_API_BASE
+
+
 export default function ExperienceDetail() {
-  const [loading, setLoading] = useState(true);
 
   const { id } = useParams();
-  // const experience = experiences.find(e => e.id === id);
+  const [loading, setLoading] = useState(true);
 
   const [experience, setExperience] = useState<Experience | undefined>(undefined)
 
   async function loadExperience(url: string) {
-
     try {
       const res = await fetch(url);
       const data = await res.json()
@@ -29,7 +32,7 @@ export default function ExperienceDetail() {
   }
 
   useEffect(() => {
-    loadExperience(`https://guanadev.vercel.app/api/v1/experiences/${id}`)
+    loadExperience(`${API_BASE}/experiences/${id}`)
   }, [])
 
 
@@ -47,6 +50,7 @@ export default function ExperienceDetail() {
       </div>
     );
   }
+
   if (!experience) {
     return (
       <div className="container mx-auto px-4 py-16 text-center">
@@ -80,18 +84,11 @@ export default function ExperienceDetail() {
           <p className="text-xl text-muted-foreground">{experience.company}</p>
         </div>
 
-        {/* {experience.image && (
-          <img
-            src={experience.image}
-            alt={experience.company}
-            className="w-full h-64 object-cover rounded-lg"
-          />
-        )} */}
-
         <img
           src={
             experience.image && experience.image == ''
-              ? experience.image : '/placeholder.svg'
+              ? experience.image
+              : '/placeholder.svg'
           }
           alt={experience.company}
           className="w-full h-64 object-cover rounded-lg"
@@ -130,7 +127,6 @@ export default function ExperienceDetail() {
               </div>
             )}
 
-            {/* PARTE DOS PROJECTOS */}
             {experience.projects && experience.projects.length > 0 && (
               <div>
                 <h3 className="text-xl font-heading font-semibold mb-3">Projetos desenvolvidos</h3>

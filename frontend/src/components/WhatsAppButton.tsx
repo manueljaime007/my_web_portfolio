@@ -11,10 +11,10 @@ export const WhatsAppButton = () => {
     <Button
       onClick={handleClick}
       size="icon"
-      className="fixed bottom-20 right-10 h-14 w-14 rounded-full shadow-xl hover:scale-110 transition-transform duration-300 z-50"
+      className="fixed bottom-16 right-10 h-14 w-14 rounded-full shadow-xl hover:scale-110 transition-transform duration-300 z-50 lg:bottom-20"
       aria-label="WhatsApp"
     >
-      <FaWhatsapp className="h-6 w-6" />
+      <FaWhatsapp className="h-5 w-5" />
     </Button>
   );
 };

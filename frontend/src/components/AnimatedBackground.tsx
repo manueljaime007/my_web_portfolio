@@ -1,4 +1,3 @@
-import { Terminal, Code2, Zap, Laptop } from 'lucide-react';
 import {
   SiReact,
   SiTypescript,
@@ -9,7 +8,6 @@ import {
   SiJavascript,
   SiSass,
   SiMysql,
-  SiUbuntu,
   SiNextdotjs,
   SiHtml5,
   SiCss3
@@ -18,18 +16,9 @@ import {
 import { motion } from 'framer-motion';
 
 const icons = [
-  // { Icon: Terminal, delay: 0 },
-  // { Icon: Code2, delay: 0.5 },
-  // { Icon: Zap, delay: 1 },
-  // { Icon: Laptop, delay: 1.5 },
-  // { Icon: Terminal, delay: 2 },
-  // { Icon: Code2, delay: 2.5 },
-
-  // adicionei
   { Icon: SiSass, delay: 0 },
   { Icon: SiMysql, delay: 0.5 },
   { Icon: SiNextdotjs, delay: 1 },
-  // { Icon: SiUbuntu, delay: 1.5 },
   { Icon: SiHtml5, delay: 2 },
   { Icon: SiCss3, delay: 2 },
   { Icon: SiTailwindcss, delay: 2.5 },
@@ -59,7 +48,6 @@ export const AnimatedBackground = () => {
             rotate: [0, 360, -10, 0],
           }}
           transition={{
-            // duration: 8 + Math.random() * 4,
             duration: 8 + Math.random() * 20,
             repeat: Infinity,
             delay: item.delay,
@@ -70,7 +58,6 @@ export const AnimatedBackground = () => {
             top: `${(index * 30) % 100}%`,
           }}
         >
-          {/* <item.Icon size={32} strokeWidth={1} /> */}
           <item.Icon size={32} strokeWidth={1} />
 
         </motion.div>

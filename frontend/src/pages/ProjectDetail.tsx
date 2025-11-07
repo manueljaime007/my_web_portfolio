@@ -8,16 +8,17 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Project } from '@/interfaces/Project';
 import { useEffect, useState } from 'react';
 
+// URL da API 
+const API_BASE: string = import.meta.env.VITE_API_BASE
 
 export default function ProjectDetail() {
 
   const [loading, setLoading] = useState(true);
-
   const { id } = useParams();
   const [project, setProject] = useState<Project | undefined>(undefined)
 
   // Função para carregar projetos da API
-  async function carregarProjecto(url: string) {
+  async function loadProject(url: string) {
     try {
 
       setLoading(true);
@@ -50,7 +51,7 @@ export default function ProjectDetail() {
   }
 
   useEffect(() => {
-    carregarProjecto(`https://guanadev.vercel.app/api/v1/projects/${id}`);
+    loadProject(`${API_BASE}/projects/${id}`);
   }, []);
 
 

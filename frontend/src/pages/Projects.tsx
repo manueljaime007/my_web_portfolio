@@ -2,20 +2,23 @@ import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ExternalLink } from 'lucide-react';
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { SiGithub } from 'react-icons/si'
+import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-
 import { Project } from '@/interfaces/Project';
+
+
+// URL da API 
+const API_BASE: string = import.meta.env.VITE_API_BASE
 
 export default function Projects() {
 
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
-  const [projectos, setProjectos] = useState<Project[]>([]);
+  const [projects, setProjects] = useState<Project[]>([]);
 
   async function loadProjects(url: string) {
     try {
@@ -39,7 +42,7 @@ export default function Projects() {
         }
       }));
 
-      setProjectos(adapted_data);
+      setProjects(adapted_data);
     } catch (error) {
       console.error('Erro ao carregar projetos:', error);
     } finally {
@@ -51,20 +54,21 @@ export default function Projects() {
   useEffect(() => {
 
     const interval = setInterval(() => {
-      loadProjects('https://guanadev.vercel.app/api/v1/projects');
+      loadProjects(`${API_BASE}/projects`);
     }, 100000)
 
-    loadProjects('https://guanadev.vercel.app/api/v1/projects');
+    loadProjects(`${API_BASE}/projects`);
 
     return () => clearInterval(interval);
+
   }, []);
 
   // Obter todas as tecnologias únicas para os filtros
-  const allTechs = Array.from(new Set(projectos.flatMap(p => p.tags)));
+  const allTechs = Array.from(new Set(projects.flatMap(p => p.tags)));
 
   // Função para filtrar projetos com base em tipo, pesquisa e tecnologia
   const filterProjects = (type: 'all' | 'individual' | 'group') => {
-    return projectos
+    return projects
       .filter(p => type === 'all' || p.type === type)
       .filter(
         p =>
@@ -144,9 +148,9 @@ export default function Projects() {
           {['all', 'individual', 'group'].map((type) => (
             <TabsContent key={type} value={type} className="mt-6">
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filterProjects(type as 'all' | 'individual' | 'group').map((projecto, index) => (
+                {filterProjects(type as 'all' | 'individual' | 'group').map((project, index) => (
                   <motion.div
-                    key={projecto.id}
+                    key={project.id}
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.1 }}
@@ -155,21 +159,21 @@ export default function Projects() {
                       <CardHeader>
                         <img
                           src={
-                            projecto.image && projecto.image == ''
-                              ? projecto.image :
+                            project.image && project.image == ''
+                              ? project.image :
                               'placeholder.svg'
                           }
-                          alt={projecto.title}
+                          alt={project.title}
                           className="w-full h-48 object-cover rounded-lg mb-4"
                         />
 
-                        <h3 className="text-xl font-heading font-semibold">{projecto.title}</h3>
+                        <h3 className="text-xl font-heading font-semibold">{project.title}</h3>
                       </CardHeader>
 
                       <CardContent className="flex-1">
-                        <p className="text-muted-foreground mb-4">{projecto.description}</p>
+                        <p className="text-muted-foreground mb-4">{project.description}</p>
                         <div className="flex flex-wrap gap-2">
-                          {projecto.tags.map((tag) => (
+                          {project.tags.map((tag) => (
                             <Badge key={tag} variant="secondary">
                               {tag}
                             </Badge>
@@ -179,13 +183,13 @@ export default function Projects() {
 
                       <CardFooter className="flex gap-2">
                         <Button asChild size="sm" className="flex-1">
-                          <Link to={`/projetos/${projecto.id}`}>Ver mais</Link>
+                          <Link to={`/projetos/${project.id}`}>Ver mais</Link>
                         </Button>
 
-                        {projecto.links.site && (
+                        {project.links.site && (
                           <Button asChild variant="outline" size="sm">
                             <a
-                              href={projecto.links.site}
+                              href={project.links.site}
                               target="_blank"
                               rel="noopener noreferrer"
                             >
@@ -194,10 +198,10 @@ export default function Projects() {
                           </Button>
                         )}
 
-                        {projecto.links.github && (
+                        {project.links.github && (
                           <Button asChild variant="outline" size="sm">
                             <a
-                              href={projecto.links.github}
+                              href={project.links.github}
                               target="_blank"
                               rel="noopener noreferrer"
                             >

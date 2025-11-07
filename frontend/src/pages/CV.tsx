@@ -9,7 +9,7 @@ export default function CV() {
     // Automatically download CV
     const link = document.createElement('a');
     link.href = '/cv.pdf';
-    link.download = 'GuanaBee_CV.pdf';
+    link.download = 'Manuel_Jaime_CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

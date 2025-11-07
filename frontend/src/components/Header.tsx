@@ -7,8 +7,6 @@ import { Button } from './ui/button';
 
 const navLinks = [
   { name: 'Home', path: '/' },
-  // { name: 'Sobre mim', path: '/sobre' },
-  // { name: 'Minha tech stack', path: '/tech-stack' },
   { name: 'Projetos', path: '/projetos' },
   { name: 'Experiências', path: '/experiencias' },
   { name: 'Galeria', path: '/galeria' },
@@ -26,9 +24,7 @@ export const Header = () => {
       <nav className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link to="/" className="text-[1.2rem] font-heading font-bold text-gradient flex items-center">
           <ChevronLeft size={25} className='text-primary' />
-          {/* GuanaBee 007  */}
           {LOGO_TITLE}
-          {/* <SlashIcon size={20} className='text-primary' /> */}
           <ChevronRight size={25} className='text-primary' />
         </Link>
 

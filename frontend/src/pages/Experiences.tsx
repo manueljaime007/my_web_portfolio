@@ -6,19 +6,24 @@ import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { Experience } from '@/interfaces/Experience';
 
+
+// URL da API 
+const API_BASE: string = import.meta.env.VITE_API_BASE
+
+
 export default function Experiences() {
 
   const [loading, setLoading] = useState(true);
-  const [experiences, setExps] = useState<Experience[]>([])
+  const [experiences, setExperiences] = useState<Experience[]>([])
 
   async function loadExperiences(url: string) {
     const res = await fetch(url);
     const data = await res.json()
-    setExps(data)
+    setExperiences(data)
     try {
       const res = await fetch(url);
       const data = await res.json()
-      setExps(data)
+      setExperiences(data)
 
     } catch (error) {
       console.error(`Erro ao carregar experiências. ${error}`)
@@ -28,7 +33,7 @@ export default function Experiences() {
   }
 
   useEffect(() => {
-    loadExperiences(`https://guanadev.vercel.app/api/v1/experiences`)
+    loadExperiences(`${API_BASE}/experiences`)
   }, [])
   if (loading) {
     return (

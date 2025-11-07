@@ -1,19 +1,23 @@
+import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+
 import { ArrowRight, Download } from 'lucide-react';
 import { SiGithub, SiInstagram, SiLinkedin } from 'react-icons/si';
 import { FaDiscord } from 'react-icons/fa6';
 
-import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { AnimatedBackground } from '@/components/AnimatedBackground';
-import { motion } from 'framer-motion';
-import profileImage from '@/assets/profile.jpeg';
+
 import About from './About';
 import TechStack from './TechStack';
+
+import profileImage from '@/assets/profile.jpeg';
 
 const social_links = {
   github: "https://github.com/manueljaime007",
   linkedin: "https://www.linkedin.com/in/manuel-jaime-816a8536b/",
-  instagram: ""
+  instagram: "https://www.instagram.com/manuel_jaime007/",
+  discord: "https://discord.com/channels/@me"
 }
 
 export default function Home() {
@@ -70,7 +74,7 @@ export default function Home() {
 
               <div className="flex items-center gap-4 pt-4">
                 <a
-                  href="https://linkedin.com"
+                  href={social_links.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -79,7 +83,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://instagram.com"
+                  href={social_links.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -88,7 +92,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://discord.com/channels/@me"
+                  href={social_links.discord}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-muted-foreground hover:text-primary transition-colors"
@@ -120,6 +124,7 @@ export default function Home() {
 
       {/* About */}
       <About />
+      {/* TechStack */}
       <TechStack />
     </>
   );

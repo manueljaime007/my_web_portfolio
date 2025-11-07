@@ -60,8 +60,6 @@ export const Footer = () => {
               <FaDiscord className="h-6 w-6" />
 
             </a>
-
-
           </div>
         </div>
       </div>
