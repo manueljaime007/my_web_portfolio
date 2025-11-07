@@ -13,7 +13,6 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, adapter);
   app.setGlobalPrefix('api/v1');
   app.enableCors({
-    // origin: 'https://manueljaime.vercel.app',
     origin: FRONTEND_BASE,
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],

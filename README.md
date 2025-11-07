@@ -1,97 +1,89 @@
-# Meu Portfólio Web Profissional
+# My Professional Web Portfolio
 
-> Aplicação full stack moderna desenvolvida com tecnologias de ponta para demonstrar minhas habilidades em **Frontend, Backend e Arquitetura de Software**.
+![Status](https://img.shields.io/badge/status-online-success)
+![Tech](https://img.shields.io/badge/stack-NestJS_+_React-blue)
 
-![Screenshot da aplicação](docs/img/screenshot.png)
+> A modern full-stack application built with cutting-edge technologies to showcase my skills in **Frontend, Backend, and Software Architecture**.
 
+<!-- 🔗 [Visit website](https://teu-link.vercel.app) -->
 
----
+![App Screenshot](docs/img/screenshot_1.png)
 
-<!-- 🔗 [Acessar o projeto](https://teu-link.vercel.app) -->
+**Dark Mode**
 
+![App Screenshot](docs/img/screenshot_2.png)
 
-## Tecnologias Principais
+## Main Technologies
 
 ### Backend – **NestJS + Prisma**
 
-- **NestJS (v11)** — Framework robusto para Node.js com arquitetura modular e suporte a TypeScript.
-- **Prisma ORM (v6)** — Mapeamento de dados eficiente e tipado para PostgreSQL.
-- **PostgreSQL** — Banco de dados relacional de alta performance.
-- **Zod + Class Validator** — Validação segura e escalável de dados.
-- **bcrypt** — Hashing de senhas com segurança de nível profissional.
-- **Swagger** — Documentação automática e interativa da API.
+- **NestJS (v11)** — A robust Node.js framework with modular architecture and full TypeScript support.
+- **Prisma ORM (v6)** — Efficient and type-safe data mapping for PostgreSQL.
+- **PostgreSQL** — High-performance relational database.
+- **Zod + Class Validator** — Secure and scalable data validation.
+- **Swagger** — Automatic and interactive API documentation.
 
 ### Frontend – **React + Tailwind + Radix UI**
 
-- **React 18** — Interface dinâmica e declarativa.
-- **Tailwind CSS 3** — Estilização rápida e responsiva com utilitários prontos.
-- **Radix UI + Framer Motion** — Componentes acessíveis com animações fluidas.
-- **TanStack Query** — Controle inteligente de estado e requisições assíncronas.
-- **React Hook Form + Zod** — Formulários reativos com validação forte.
-- **Lucide React* — Ícones e modernos e leves.
-<!-- - **Lucide React & Recharts** — Ícones e gráficos modernos e leves. -->
+- **React 18** — Dynamic and declarative user interfaces.
+- **Tailwind CSS 3** — Fast and responsive styling with utility-first classes.
+- **Radix UI + Framer Motion** — Accessible components with smooth animations.
+- **TanStack Query** — Smart state and async data management.
+- **Lucide React** — Modern and lightweight icon set.
 
-### Ferramentas de Desenvolvimento
+### Development Tools
 
-- **TypeScript 5.9** — Tipagem avançada para maior confiabilidade do código.
-- **Vite** — Build ultra rápido e otimizado para produção.
-- **ESLint + Prettier** — Padronização e qualidade de código.
-- **Jest + Supertest** — Testes automatizados de integração e unidade.
+- **TypeScript 5.9** — Advanced typing for reliable and maintainable code.
+- **Vite** — Ultra-fast build tool optimized for production.
+- **ESLint + Prettier** — Code quality and formatting consistency.
+- **Jest + Supertest** — Automated unit and integration testing.
 
 ---
 
-## Funcionalidades
+## Features
 
--  Páginas web responsivas.
--  Autenticação e autorização com JWT e bcrypt.
--  CRUD completo com validação e tratamento de erros.
--  Modo claro/escuro dinâmico.
--  API documentada com Swagger.
-<!-- -  Dashboard interativo e responsivo. -->
+- Fully responsive web pages.
+- Authentication and authorization with JWT and bcrypt.
+- Complete CRUD operations with validation and error handling.
+- Dynamic light/dark mode.
+- API documented with Swagger.
+<!-- -  Interactive and responsive dashboard. -->
 
 ---
 
-## Estrutura do Projeto
+## Project Structure
 
 ```
 ├── project/
-│ ├── api/ 
-│ └── docs/ 
+│ ├── api/
+│ └── docs/
 │ └── frontend/
 └── README.md
 ```
 
-## Aprendizados e Objetivo
+## Learning Goals and Purpose
 
-Esse projeto foi criado com o propósito de:
+This project was created to:
 
-- Consolidar meus conhecimentos em **desenvolvimento web full stack**;
-- Demonstrar minha capacidade de **criar, organizar e documentar** sistemas complexos;
-- Servir como **base profissional** para projetos futuros e contribuições open-source.
-
----
-
-## Deploy
-
-- **Frontend:** hospedado na [Vercel](https://vercel.com)
-- **Backend:** construído em **NestJS**, pronto para escalar em qualquer ambiente.
+- Strengthen my knowledge in **full-stack web development**;
+- Demonstrate my ability to **build, organize, and document** complex systems;
+- Serve as a **professional foundation** for future projects and open-source contributions.
 
 ---
 
-## Autor
+## Deployment
+
+- **Frontend:** hosted on [Vercel](https://vercel.com)
+- **Backend:** built with **NestJS**, ready to scale in any environment.
+
+---
+
+## Author
 
 **Manuel Jaime**  
-Desenvolvedor Web | Frontend & Backend  
+Web Developer | Frontend & Backend  
 📧 manueljaime0020@gmail.com _(manueljaime0020@gmail.com)_  
-🌐 [LinkedIn](https://www.linkedin.com/in/manuel-jaime-816a8536b/) · [GitHub]("https://github.com/manueljaime007")
+🌐 [LinkedIn](https://www.linkedin.com/in/manuel-jaime-816a8536b/) 
+<!-- · [GitHub]("https://github.com/manueljaime007") -->
 
 ---
-
-
-
-<!-- ![Status](https://img.shields.io/badge/status-online-success) -->
-<!-- ![Tech](https://img.shields.io/badge/stack-NestJS_+_React-blue) -->
-
-
-<!-- --- -->
-
