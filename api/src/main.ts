@@ -1,4 +1,3 @@
-// src/main.ts
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ExpressAdapter } from '@nestjs/platform-express';
@@ -8,13 +7,14 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 const server = express();
 const adapter = new ExpressAdapter(server);
 
+const FRONTEND_BASE = process.env.FRONTEND_BASE
+
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, adapter);
   app.setGlobalPrefix('api/v1');
   app.enableCors({
-    // origin: ['https://site1.com', 'http://localhost:5173'],
-    origin: '*',
     // origin: 'https://manueljaime.vercel.app',
+    origin: FRONTEND_BASE,
     methods: ['GET', 'POST', 'PATCH', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
