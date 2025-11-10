@@ -1,7 +1,7 @@
 type categoryType =
   | "Frontend"
   | "Backend"
-  | "Mobile"
+  // | "Mobile"
   | "Database"
   | "DevOps"
   | "Cloud";
@@ -16,7 +16,7 @@ export const categories = [
   "Todos",
   "Frontend",
   "Backend",
-  "Mobile",
+  // "Mobile",
   "Database",
   "DevOps",
   "Cloud",

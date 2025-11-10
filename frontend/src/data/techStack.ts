@@ -21,12 +21,12 @@ export const techStack: Tech[] = [
     level: "Intermediário",
     category: "Frontend",
   },
-  {
-    name: "React Native",
-    icon: "SiReact",
-    level: "Básico",
-    category: "Mobile",
-  },
+  // {
+  //   name: "React Native",
+  //   icon: "SiReact",
+  //   level: "Básico",
+  //   category: "Mobile",
+  // },
   {
     name: "Next.js",
     icon: "SiNextdotjs",
@@ -39,12 +39,12 @@ export const techStack: Tech[] = [
     level: "Avançado",
     category: "Frontend",
   },
-  {
-    name: "Nativewind",
-    icon: "SiTailwindcss",
-    level: "Básico",
-    category: "Mobile",
-  },
+  // {
+  //   name: "Nativewind",
+  //   icon: "SiTailwindcss",
+  //   level: "Básico",
+  //   category: "Mobile",
+  // },
   {
     name: "Sass",
     icon: "SiSass",
@@ -88,12 +88,12 @@ export const techStack: Tech[] = [
     level: "Básico",
     category: "Database",
   },
-  {
-    name: "SQLite",
-    icon: "SiSqlite",
-    level: "Básico",
-    category: "Database",
-  },
+  // {
+  //   name: "SQLite",
+  //   icon: "SiSqlite",
+  //   level: "Básico",
+  //   category: "Database",
+  // },
   {
     name: "Prisma",
     icon: "SiPrisma",

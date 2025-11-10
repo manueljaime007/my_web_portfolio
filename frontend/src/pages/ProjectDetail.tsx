@@ -109,14 +109,14 @@ export default function ProjectDetail() {
 
         <img
           src={
-            project.image && project.image == ''
+            project.image 
               ? project.image
               : '/placeholder.svg'
           }
 
 
           alt={project.title}
-          className="w-full h-96 object-cover rounded-lg"
+          className="w-full h-100 object-cover rounded-lg"
         />
 
         <Card>

@@ -136,7 +136,6 @@ export default function Projects() {
             ))}
           </div>
         </div>
-
         {/* Tabs */}
         <Tabs defaultValue="all" className="max-w-5xl mx-auto">
           <TabsList className="grid w-full grid-cols-3">
@@ -159,12 +158,12 @@ export default function Projects() {
                       <CardHeader>
                         <img
                           src={
-                            project.image && project.image == ''
-                              ? project.image :
-                              'placeholder.svg'
+                            project.image
+                              ? project.image
+                              : 'placeholder.svg'
                           }
                           alt={project.title}
-                          className="w-full h-48 object-cover rounded-lg mb-4"
+                          className="w-full h-48 mb-4"
                         />
 
                         <h3 className="text-xl font-heading font-semibold">{project.title}</h3>
