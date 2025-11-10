@@ -46,7 +46,7 @@ export default function Home() {
               </h1>
               <p className="text-xl text-muted-foreground max-w-lg">
                 {/* Desenvolvedor Web & Mobile Júnior, especializado em criar experiências web modernas, escaláveis e de alta performance usando as tecnologias mais recentes. */}
-                Desenvolvedor Web & Mobile Júnior, aprendendo todos os dias e criando soluções práticas com as tecnologias mais recentes.
+                Desenvolvedor Web Júnior, aprendendo todos os dias e criando soluções práticas com as tecnologias mais recentes.
               </p>
 
               <div className="flex flex-wrap gap-8 md:gap-4">
